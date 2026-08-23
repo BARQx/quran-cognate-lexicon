@@ -1,6 +1,6 @@
 # README
 
-# Qur’anic Arabic Cognate Dictionary
+# Qur'anic Arabic Cognate & Lexicon Portal
 
 This tool is designed to help you uncover the deeper meanings of Qur'anic words by connecting them to their sister language, Hebrew. Because Arabic and Hebrew are literal sisters from the exact same Semitic family tree, thousands of their words share identical origins. While classical Arabic dictionaries often narrowed a word down to specific regional uses, Hebrew frequently preserved older, broader shades of meaning that got lost over time.
 
