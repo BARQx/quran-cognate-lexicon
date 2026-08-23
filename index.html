@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Search Engine Optimization -->
+  <title>Qur'anic Arabic Cognate & Lexicon Portal | Comparative Semitic Root Analyzer</title>
+  <meta name="title" content="Qur'anic Arabic Cognate & Lexicon Portal | Comparative Semitic Root Analyzer">
+  <meta name="description" content="Explore Qur'anic Arabic roots, discover Hebrew and Ge'ez cognates, reconstruct ancient scripts (Nabataean, Sabaic, Syriac), and query classical lexicons like Lane's and Hans Wehr instantly.">
+  <meta name="keywords" content="Qur'anic Arabic, Hebrew cognates, Semitic roots, Ge'ez, Lane's Lexicon, Hans Wehr, Sefaria API, Sabaic, Musnad, Nabataean script, Arabic root analyzer, comparative linguistics">
+  <meta name="author" content="Nashit Ahmed Barq">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Card -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://barqx.github.io/quran-cognate-lexicon/">
+  <meta property="og:title" content="Qur'anic Arabic Cognate & Lexicon Portal">
+  <meta property="og:description" content="Automated comparative Semitic root engine: map Qur'anic Arabic to Hebrew, Ge'ez, and ancient epigraphic scripts while searching classical lexicons in one click.">
+
+  <!-- Twitter / X Preview Card -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://barqx.github.io/quran-cognate-lexicon/">
+  <meta property="twitter:title" content="Qur'anic Arabic Cognate & Lexicon Portal">
+  <meta property="twitter:description" content="Discover Hebrew cognates and ancient scripts for Qur'anic roots, and cross-reference major Arabic dictionaries instantly.">
+
+  <!-- JSON-LD Structured Data for Google Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Qur'anic Arabic Cognate & Lexicon Portal",
+    "url": "https://barqx.github.io/quran-cognate-lexicon/",
+    "description": "An open-source comparative Semitic root analyzer and multi-lexicon search portal for Qur'anic Arabic, Hebrew, Ge'ez, Syriac, Sabaic, and Nabataean scripts.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All",
+    "inLanguage": ["en", "ar", "he"],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Algorithmic sound-shift mapping from Arabic to Hebrew, Ge'ez, Syriac, Sabaic, and Nabataean",
+      "Live Sefaria lexicon API integration",
+      "Multi-dictionary root lookup for Lane's Lexicon, Hans Wehr, Ejtaal, and Al-Ma'any",
+      "Letter-by-letter comparative phonetic breakdown",
+      "Alternate Hebrew root resolution for weak and geminate forms"
+    ]
+  }
+  </script>
+  
+  <!-- Web Fonts for Ancient Epigraphic Scripts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Nabataean&family=Noto+Sans+Old+South+Arabian&family=Noto+Sans+Syriac&family=SBL+Hebrew&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       Token system: light = papyrus & cinnabar ink
+                      dark:  basalt tablet & torchlight ochre
+       ============================================================ */
+    :root {
+      color-scheme: light;
+      --bg-color: #f4ecd8;
+      --bg-color-alt: #ece0c4;
+      --card-bg: #fffcf4;
+      --primary: #2b2118;
+      --accent: #a8542f;
+      --accent-hover: #8f4526;
+      --accent-soft: #f3e2d4;
+      --accent2: #3d6b6b;
+      --accent2-soft: #e2eeed;
+      --border: #ddd0ac;
+      --text: #2b2118;
+      --muted: #7a6c54;
+      --box-bg: #f0e6cc;
+      --badge-bg: #e2eeed;
+      --badge-text: #285454;
+      --tag-bg: #efe3c9;
+      --danger: #b3311c;
+      --link-bg: #fffcf4;
+      --shadow: rgba(43, 33, 24, 0.08);
+      --font-display: 'Fraunces', 'Times New Roman', serif;
+      --font-body: 'Work Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg-color: #14181c;
+      --bg-color-alt: #191e23;
+      --card-bg: #1d2329;
+      --primary: #ece4d0;
+      --accent: #e0864f;
+      --accent-hover: #ec9a68;
+      --accent-soft: #33261c;
+      --accent2: #5fa8a8;
+      --accent2-soft: #1c2c2c;
+      --border: #2c343b;
+      --text: #ece4d0;
+      --muted: #93998f;
+      --box-bg: #232a31;
+      --badge-bg: #1c2c2c;
+      --badge-text: #7fc7c7;
+      --tag-bg: #262e35;
+      --danger: #f0715c;
+      --link-bg: #1d2329;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { transition: background-color 0.25s ease; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-color);
+      background-image:
+        radial-gradient(ellipse at top left, var(--bg-color-alt) 0%, transparent 55%),
+        radial-gradient(ellipse at bottom right, var(--bg-color-alt) 0%, transparent 55%);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.5;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-display); }
+
+    .container { max-width: 1000px; margin: 0 auto; width: 100%; flex: 1 0 auto; }
+    header { text-align: center; margin-bottom: 24px; }
+    .container { position: relative; }
+
+    header { position: relative; padding-top: 6px; }
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    p.subtitle { color: var(--muted); font-size: 0.85rem; font-family: var(--font-body); }
+
+    /* Theme toggle - a little stone switch */
+    .theme-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 52px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--box-bg);
+      cursor: pointer;
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+    .theme-toggle:hover { border-color: var(--accent); }
+    .theme-toggle .knob {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transform: translateX(0);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    html[data-theme="dark"] .theme-toggle .knob { transform: translateX(22px); }
+
+    /* Glyph frieze - a signature lintel of the six scripts drifting like an inscription */
+    .glyph-frieze {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-color-alt);
+      margin: 16px 0 20px 0;
+      padding: 10px 0;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .glyph-frieze .track {
+      display: inline-flex;
+      gap: 34px;
+      animation: frieze-scroll 32s linear infinite;
+      will-change: transform;
+    }
+    .glyph-frieze span {
+      font-size: 1.15rem;
+      color: var(--muted);
+      opacity: 0.75;
+    }
+    @keyframes frieze-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .glyph-frieze .track { animation: none; }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px var(--shadow);
+      transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card h2 { font-size: 1.25rem; font-weight: 600; color: var(--primary); margin-bottom: 4px; }
+
+    .search-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 12px 16px;
+      font-size: 1.1rem;
+      font-family: var(--font-body);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      outline: none;
+      background: var(--card-bg);
+      color: var(--text);
+      transition: border-color 0.2s ease, background-color 0.25s ease, color 0.25s ease;
+    }
+
+    input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    input[type="text"]::placeholder { color: var(--muted); opacity: 0.8; direction: ltr; text-align: left; }
+
+    button {
+      padding: 12px 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    button:hover { background: var(--accent-hover); }
+    button:active { transform: translateY(1px); }
+    button:focus-visible, input:focus-visible, a:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Script Render Styles */
+    .script-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin: 15px 0;
+    }
+
+    .script-box {
+      background: var(--box-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+    }
+    .script-box:hover { transform: translateY(-2px); border-color: var(--accent2); }
+
+    .script-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .script-value { font-size: 1.6rem; font-weight: bold; margin-top: 4px; min-height: 40px; color: var(--primary); }
+
+    .hebrew-font { font-family: 'SBL Hebrew', 'Times New Roman', serif; }
+    .syriac-font { font-family: 'Noto Sans Syriac', serif; }
+    .nabataean-font, .nabataean-cell { font-family: 'Noto Sans Nabataean', sans-serif; }
+    .musnad-font, .musnad-cell { font-family: 'Noto Sans Old South Arabian', sans-serif; }
+
+    .tag-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .root-type-badge {
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Breakdown Table */
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.95rem; min-width: 560px; }
+    th, td { padding: 10px; text-align: center; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-color-alt); color: var(--muted); font-weight: 600; }
+    tbody tr { transition: background-color 0.15s ease; }
+    tbody tr:hover { background: var(--accent2-soft); }
+    .law-note { font-size: 0.8rem; color: var(--muted); text-align: left; }
+
+    summary { color: var(--accent); }
+
+    /* Dictionary Cards */
+    .dict-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-top: 12px;
+      overflow: hidden;
+    }
+
+    .dict-header {
+      background: var(--bg-color-alt);
+      padding: 10px 14px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .dict-source-tag { font-size: 0.75rem; background: var(--tag-bg); color: var(--muted); padding: 2px 6px; border-radius: 4px; }
+    .dict-content { padding: 14px; }
+    .def-list { margin-left: 20px; margin-top: 6px; }
+    .def-list li { margin-bottom: 4px; }
+    .homonym-title { color: var(--primary); }
+
+    .btn-secondary {
+      background: var(--tag-bg);
+      color: var(--text);
+      margin-top: 10px;
+    }
+    .btn-secondary:hover { background: var(--border); }
+
+    .error-msg { color: var(--danger); font-size: 0.9rem; margin-top: 5px; }
+
+    .link-tile {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 8px;
+      text-decoration: none;
+      color: var(--text);
+      background: var(--link-bg);
+      transition: border-color 0.15s ease, background-color 0.25s ease, transform 0.1s ease;
+    }
+    .link-tile:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateX(2px); }
+    .link-tile .desc { display: block; font-size: 0.75rem; color: var(--muted); }
+
+    /* Footer — deliberately set apart from the card/tool styling above */
+    .site-footer {
+      border-top: 1px dashed var(--border);
+      margin-top: auto;
+      padding: 22px 16px 16px 16px;
+      background: var(--bg-color-alt);
+      flex-shrink: 0;
+      width: 100%;
+    }
+    .footer-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .footer-why {
+      font-size: 0.78rem;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .footer-author {
+      font-size: 0.72rem;
+      font-style: normal;
+      color: var(--muted);
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-author a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .footer-author a:hover { text-decoration: underline; }
+
+    /* ==================== Mobile responsiveness ==================== */
+    @media (max-width: 640px) {
+      body { padding: 12px; }
+      .container { max-width: 100%; }
+      header { padding-top: 44px; }
+      .theme-toggle { top: -40px; right: 4px; }
+      h1 { font-size: 1.5rem; }
+      p.subtitle { font-size: 0.85rem; }
+      .card { padding: 16px; border-radius: 10px; }
+      .card h2 { font-size: 1.2rem; }
+      .search-box { flex-direction: column; }
+      .search-box button { width: 100%; }
+      .script-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .script-value { font-size: 1.25rem; min-height: 32px; }
+      .dict-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .link-tile { flex-direction: row; }
+      th, td { padding: 8px 6px; font-size: 0.85rem; }
+      .glyph-frieze span { font-size: 0.95rem; }
+    }
+
+    @media (max-width: 400px) {
+      .script-grid { grid-template-columns: repeat(2, 1fr); }
+      h1 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle light / dark mode">
+      <span class="knob" id="themeKnob">☀</span>
+    </button>
+    <h1>Qur'anic Arabic Cognate & Lexicon Portal</h1>
+    <p class="subtitle">Cross-language root analysis and direct lookup across classical dictionaries.</p>
+  </header>
+
+  <div class="glyph-frieze" aria-hidden="true">
+    <div class="track" id="glyphFriezeTrack"></div>
+  </div>
+
+  <!-- Section 1: Root Analysis -->
+  <div class="card">
+    <h2>1. Comparative Root Analyzer</h2>
+    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;">Enter an Arabic root (e.g., س ل م، س-ل-م, سلم)</p>
+    
+    <div class="search-box">
+      <input type="text" id="arabicInput" dir="rtl" placeholder="Enter Arabic root" onkeypress="if(event.key==='Enter') convertAndFetch()">
+      <button onclick="convertAndFetch()">Analyze Root</button>
+    </div>
+    <div id="error" class="error-msg"></div>
+
+    <div id="resultBox" style="display:none;">
+      <div id="rootTagBar" class="tag-bar"></div>
+
+      <!-- Unified Language Sequence across display boxes and table: Arabic -> Nabataean -> Hebrew -> Syriac -> Musnad -> Ge'ez -->
+      <div class="script-grid">
+        <div class="script-box">
+          <div class="script-label">Arabic</div>
+          <div id="arabicRoot" class="script-value"></div>
+        </div>
+        <div class="script-box">
+          <div class="script-label">Nabataean</div>
+          <div id="nabataeanRoot" class="script-value nabataean-font"></div>
+        </div>
+        <div class="script-box">
+          <div class="script-label">Hebrew</div>
+          <div id="hebrewRoot" class="script-value hebrew-font"></div>
+        </div>
+        <div class="script-box">
+          <div class="script-label">Syriac</div>
+          <div id="syriacRoot" class="script-value syriac-font"></div>
+        </div>
+        <div class="script-box">
+          <div class="script-label">Musnad (Sabaic)</div>
+          <div id="musnadRoot" class="script-value musnad-font"></div>
+        </div>
+        <div class="script-box">
+          <div class="script-label">Ge'ez</div>
+          <div id="geezRoot" class="script-value"></div>
+        </div>
+      </div>
+
+      <div id="alternatives" style="font-size:0.85rem; margin-bottom:10px;"></div>
+
+      <details style="margin-top:15px;">
+        <summary style="cursor:pointer; font-weight:600; color:var(--accent);">View Letter-by-Letter Epigraphic Breakdown</summary>
+        <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Arabic</th>
+              <th>Nabataean</th>
+              <th>Hebrew</th>
+              <th>Syriac</th>
+              <th>Musnad</th>
+              <th>Ge'ez</th>
+              <th style="text-align:left;">Phonetic / Phonological Correspondence</th>
+            </tr>
+          </thead>
+          <tbody id="breakdownBody"></tbody>
+        </table>
+        </div>
+      </details>
+
+      <button class="btn-secondary" onclick="copyResearchBrief()">Copy Research Brief (Markdown)</button>
+
+      <h3 style="margin-top:20px; font-size:1.1rem;">Lexicon Lookup (Sefaria & Wiktionary)</h3>
+      <div id="resultsContainer"></div>
+    </div>
+  </div>
+
+  <!-- Section 2: External Lexicon Links -->
+  <div class="card">
+    <h2>2. External Arabic Lexicons Portal</h2>
+    <div style="margin-bottom:10px;">
+      <label><input type="radio" name="searchType" value="root" checked onclick="toggleModeNotice()"> Root Mode</label>
+      <label style="margin-left:15px;"><input type="radio" name="searchType" value="word" onclick="toggleModeNotice()"> Exact Word Mode</label>
+    </div>
+    <div class="search-box">
+      <input type="text" id="lexiconInput" dir="rtl" placeholder="Enter word or root for direct dictionary links" onkeyup="generateLexiconLinks()">
+    </div>
+
+    <div id="lexiconResultBox" style="display:none;">
+      <h4 style="margin:10px 0 5px 0;">Classical & Root Lexicons</h4>
+      <div id="classicalLinks"></div>
+      
+      <h4 style="margin:10px 0 5px 0;">Modern & Bilingual Dictionaries</h4>
+      <div id="bilingualLinks"></div>
+
+      <h4 style="margin:10px 0 5px 0;">Corpus & Textual Analysis</h4>
+      <div id="corpusLinks"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-why">
+      This tool helps you understand Qur'anic Arabic words by looking at their Hebrew cognates. Arabic
+      and Hebrew both descend from the same Semitic root system, and Hebrew often kept older or wider
+      senses of a root alive that classical Arabic dictionaries no longer show. Type in a root, and this
+      tool finds its Hebrew form and looks it up in real dictionaries for you.
+    </p>
+    <p class="footer-author">
+      Built by Nashit Ahmed Barq &middot;
+	  v1.0 &middot;
+      <a href="https://barqx.github.io/" target="_blank" rel="noopener">barqx.github.io</a> &middot;
+      <a href="https://pk.linkedin.com/in/barqx" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // SEMITIC MATRIX — Verified historical correspondences
+  const SEMITIC_MATRIX = {
+    'ا': { he: 'א', syr: 'ܐ', nab: '𐢀', msn: '𐩱', gz: 'አ', bw: 'A', note: 'Glottal stop (ʾ) — like the catch in "uh-oh"' },
+    'أ': { he: 'א', syr: 'ܐ', nab: '𐢀', msn: '𐩱', gz: 'አ', bw: '>', note: 'Glottal stop with a' },
+    'إ': { he: 'א', syr: 'ܐ', nab: '𐢀', msn: '𐩱', gz: 'አ', bw: '<', note: 'Glottal stop with i' },
+    'آ': { he: 'א', syr: 'ܐ', nab: '𐢀', msn: '𐩱', gz: 'አ', bw: '|', note: 'Glottal stop with ā' },
+    'ء': { he: 'א', syr: 'ܐ', nab: '𐢀', msn: '𐩱', gz: 'አ', bw: '\'', note: 'Glottal stop (hamza)' },
+    'ب': { he: 'ב', syr: 'ܒ', nab: '𐢁', msn: '𐩨', gz: 'በ', bw: 'b', note: 'Voiced bilabial plosive (b) — lips together, vocal cords vibrate' },
+    'ت': { he: 'ת', syr: 'ܬ', nab: '𐢕', msn: '𐩩', gz: 'ተ', bw: 't', note: 'Voiceless dental plosive (t) — tongue against teeth, no vocal cord vibration' },
+    'ث': { he: 'ת', syr: 'ܬ', nab: '𐢕', msn: '𐩻', gz: 'ተ', bw: 'v', note: 'Voiceless interdental fricative (th) — merged with t in Ge\'ez' },
+    'ج': { he: 'ג', syr: 'ܓ', nab: '𐢂', msn: '𐩴', gz: 'ገ', bw: 'j', note: 'Voiced velar plosive (g) — back of tongue against soft palate' },
+    'ح': { he: 'ח', syr: 'ܚ', nab: '𐢇', msn: '𐩢', gz: 'ሐ', bw: 'H', note: 'Voiceless pharyngeal fricative (ḥ) — deep throat sound, like heavy "h"' },
+    'خ': { he: 'ח', syr: 'ܚ', nab: '𐢇', msn: '𐩭', gz: 'ኀ', bw: 'x', note: 'Voiceless velar fricative (kh) — merged with ḥ in Hebrew/Syriac/Nabataean' },
+    'د': { he: 'ד', syr: 'ܕ', nab: '𐢃', msn: '𐩵', gz: 'ደ', bw: 'd', note: 'Voiced dental plosive (d) — tongue against teeth, vocal cords vibrate' },
+    'ذ': { he: 'ז', syr: 'ܕ', nab: '𐢃', msn: '𐩹', gz: 'ዘ', bw: '*', note: 'Voiced interdental fricative (dh) — merged with z in Hebrew, d in Syriac/Nabataean' },
+    'ر': { he: 'ר', syr: 'ܪ', nab: '𐢓', msn: '𐩧', gz: 'ረ', bw: 'r', note: 'Voiced alveolar trill (r) — rolled "r" with tongue vibrating' },
+    'ز': { he: 'ז', syr: 'ܙ', nab: '𐢆', msn: '𐩸', gz: 'ዘ', bw: 'z', note: 'Voiced alveolar fricative (z) — tongue near ridge, vocal cords vibrate' },
+    'س': { he: 'ש', syr: 'ܣ', nab: '𐢎', msn: '𐩪', gz: 'ሰ', bw: 's', note: 'Voiceless alveolar fricative (s) — Proto-Semitic *s3' },
+    'ش': { he: 'ש', syr: 'ܫ', nab: '𐢔', msn: '𐩦', gz: 'ሠ', bw: '$', note: 'Voiceless palato-alveolar fricative (sh) — cognate to Śawt (ሠ) in Ge\'ez' },
+    'ص': { he: 'צ', syr: 'ܨ', nab: '𐢑', msn: '𐩮', gz: 'ጸ', bw: 'S', note: 'Emphatic voiceless alveolar fricative (ṣ) — "s" with pharyngeal constriction' },
+    'ض': { he: 'צ', syr: 'ܨ', nab: '𐢑', msn: '𐩳', gz: 'ፀ', bw: 'D', note: 'Emphatic voiced alveolar lateral fricative (ḍ) — merged with ṣ in Hebrew/Syriac' },
+    'ط': { he: 'ט', syr: 'ܛ', nab: '𐢈', msn: '𐩷', gz: 'ጠ', bw: 'T', note: 'Emphatic voiceless dental plosive (ṭ) — emphatic "t" with pharyngeal constriction' },
+    'ظ': { he: 'ט', syr: 'ܛ', nab: '𐢈', msn: '𐩼', gz: 'ፀ', bw: 'Z', note: 'Emphatic voiced interdental fricative (ẓ) — merged with ṭ in Hebrew/Syriac/Nabataean' },
+    'ع': { he: 'ע', syr: 'ܥ', nab: '𐢏', msn: '𐩲', gz: 'ዐ', bw: 'E', note: 'Voiced pharyngeal fricative (ʿ) — deep "a" sound from the throat' },
+    'غ': { he: 'ע', syr: 'ܥ', nab: '𐢏', msn: '𐩶', gz: 'ዐ', bw: 'g', note: 'Voiced velar fricative (gh) — merged with ʿ in Hebrew/Syriac/Nabataean/Ge\'ez' },
+    'ف': { he: 'פ', syr: 'ܦ', nab: '𐢐', msn: '𐩰', gz: 'ፈ', bw: 'f', note: 'Voiceless labiodental fricative (f) — Proto-Semitic *p, became f in Arabic' },
+    'ق': { he: 'ק', syr: 'ܩ', nab: '𐢒', msn: '𐩤', gz: 'ቀ', bw: 'q', note: 'Voiceless uvular plosive (q) — deep "k" from the back of the throat' },
+    'ك': { he: 'כ', syr: 'ܟ', nab: '𐢊', msn: '𐩫', gz: 'ከ', bw: 'k', note: 'Voiceless velar plosive (k) — back of tongue against soft palate' },
+    'ل': { he: 'ל', syr: 'ܠ', nab: '𐢋', msn: '𐩡', gz: 'ለ', bw: 'l', note: 'Voiced alveolar lateral approximant (l) — air flows around sides of tongue' },
+    'م': { he: 'מ', syr: 'ܡ', nab: '𐢌', msn: '𐩣', gz: 'መ', bw: 'm', note: 'Voiced bilabial nasal (m) — lips together, air through nose' },
+    'ن': { he: 'נ', syr: 'ܢ', nab: '𐢍', msn: '𐩬', gz: 'ነ', bw: 'n', note: 'Voiced alveolar nasal (n) — tongue on ridge, air through nose' },
+    'ه': { he: 'ה', syr: 'ܗ', nab: '𐢄', msn: '𐩠', gz: 'ሀ', bw: 'h', note: 'Voiceless glottal fricative (h) — breathy sound from the throat' },
+    'و': { he: 'ו', syr: 'ܘ', nab: '𐢅', msn: '𐩥', gz: 'ወ', bw: 'w', note: 'Voiced labiovelar approximant (w) — like English "w"' },
+    'ي': { he: 'י', syr: 'ܝ', nab: '𐢉', msn: '𐩺', gz: 'የ', bw: 'y', note: 'Voiced palatal approximant (y) — like English "y"' },
+    'ى': { he: 'י', syr: 'ܝ', nab: '𐢉', msn: '𐩺', gz: 'የ', bw: 'Y', note: 'Alif maqsurah (long ā)' },
+    'ة': { he: 'ת', syr: 'ܬ', nab: '𐢕', msn: '𐩩', gz: 'ተ', bw: 'p', note: 'Ta marbuta (feminine ending)' }
+  };
+
+  SEMITIC_MATRIX['ی'] = SEMITIC_MATRIX['ي'];
+  SEMITIC_MATRIX['ے'] = SEMITIC_MATRIX['ي'];
+  SEMITIC_MATRIX['ک'] = SEMITIC_MATRIX['ك'];
+  SEMITIC_MATRIX['ڪ'] = SEMITIC_MATRIX['ك'];
+  SEMITIC_MATRIX['ہ'] = SEMITIC_MATRIX['ه'];
+  SEMITIC_MATRIX['ھ'] = SEMITIC_MATRIX['ه'];
+  SEMITIC_MATRIX['ۃ'] = SEMITIC_MATRIX['ة'];
+
+  const FINAL_LETTERS = { 'כ': 'ך', 'מ': 'ם', 'נ': 'ן', 'פ': 'ף', 'צ': 'ץ' };
+
+  let lastAnalysis = null;
+
+  function normalizeInput(text) {
+    if (!text) return '';
+    return text
+      .replace(/[\u064B-\u065F\u0670\u0652\s\-_،۔]/g, '')
+      .replace(/[\u06CC\u06D2\u0649]/g, 'ي') 
+      .replace(/[\u06A9\u06AA]/g, 'ك')
+      .replace(/[\u06C1\u06BE\u06D5]/g, 'ه')
+      .replace(/[\u06C3]/g, 'ة')
+      .replace(/[أإآء]/g, 'ا')
+      .replace(/[\u0660-\u0669\u06F0-\u06F9]/g, '');
+  }
+
+  function getBuckwalter(text) {
+    let clean = normalizeInput(text);
+    let bw = '';
+    for (let char of Array.from(clean)) {
+      bw += SEMITIC_MATRIX[char] ? SEMITIC_MATRIX[char].bw : char;
+    }
+    return bw;
+  }
+
+  function applyHebrewSofit(hebrewStr) {
+    if (!hebrewStr) return hebrewStr;
+    const chars = Array.from(hebrewStr);
+    const lastChar = chars[chars.length - 1];
+    if (FINAL_LETTERS[lastChar]) {
+      chars[chars.length - 1] = FINAL_LETTERS[lastChar];
+    }
+    return chars.join('');
+  }
+
+  function formatSurrogateAwareString(str) {
+    return Array.from(str).join('-');
+  }
+
+  function detectRootMorphology(cleanInput) {
+    const tags = [];
+    if (cleanInput.includes('و') || cleanInput.includes('ي') || cleanInput.includes('ا')) {
+      tags.push('Weak Root (معتل)');
+      if (cleanInput.startsWith('و') || cleanInput.startsWith('ي')) tags.push('Assimilating Initial (مثال)');
+      if (cleanInput.length >= 2 && (cleanInput[1] === 'و' || cleanInput[1] === 'ي')) tags.push('Hollow Medial (جوف)');
+      if (cleanInput.endsWith('و') || cleanInput.endsWith('ي') || cleanInput.endsWith('ا')) tags.push('Defective Final (ناقص)');
+    }
+    if (cleanInput.length === 2 || (cleanInput.length === 3 && cleanInput[1] === cleanInput[2])) {
+      tags.push('Geminate / Doubled (مضاعف)');
+    }
+    return tags;
+  }
+
+  function convertArabicCognates(cleanInput) {
+    let hebResult = '', syrResult = '', nabResult = '', msnResult = '', gzResult = '', bwResult = '';
+    let breakdown = [];
+
+    for (let char of Array.from(cleanInput)) {
+      let matrix = SEMITIC_MATRIX[char];
+      if (!matrix) {
+        matrix = { he: char, syr: char, nab: char, msn: char, gz: char, bw: char, note: 'Direct match (fallback)' };
+      }
+      
+      hebResult += matrix.he;
+      syrResult += matrix.syr;
+      nabResult += matrix.nab;
+      msnResult += matrix.msn || char;
+      gzResult += matrix.gz;
+      bwResult += matrix.bw;
+
+      breakdown.push({ ar: char, he: matrix.he, syr: matrix.syr, nab: matrix.nab, msn: matrix.msn || char, gz: matrix.gz, note: matrix.note });
+    }
+
+    return { 
+      primaryHebrew: applyHebrewSofit(hebResult), 
+      syriac: syrResult,
+      nabataean: nabResult,
+      musnad: msnResult,
+      geez: gzResult,
+      buckwalter: bwResult,
+      breakdown 
+    };
+  }
+
+  function formatHomonymsLocally(entries) {
+    let html = '';
+    entries.forEach((group, index) => {
+      const title = group.headword ? `<strong>Sense ${index + 1}: ${group.headword}</strong>` : `<strong>Meaning ${index + 1}</strong>`;
+      const cleanDefs = group.defs.map(d => d.replace(/<\/?[^>]+(>|$)/g, "").trim()).filter(Boolean);
+      
+      if (cleanDefs.length > 0) {
+        html += `<div class="homonym-group">
+          <div class="homonym-title">${title}</div>
+          <ul class="def-list">
+            ${cleanDefs.map(d => `<li>${d}</li>`).join('')}
+          </ul>
+        </div>`;
+      }
+    });
+    return html;
+  }
+
+  async function fetchSefariaDefinitionsGrouped(hebrewStr) {
+    try {
+      const response = await fetch(`https://www.sefaria.org/api/words/${encodeURIComponent(hebrewStr)}`);
+      if (!response.ok) return {};
+      const data = await response.json();
+      
+      const dictionaries = {};
+      if (Array.isArray(data)) {
+        data.forEach(entry => {
+          const dictName = entry.parent_lexicon || entry.parent_lexicon_details?.name || "BDB Lexicon";
+          let headword = entry.headword || "";
+          let defs = [];
+          
+          if (entry.parent_lexicon_details && entry.parent_lexicon_details.defs) {
+            defs = entry.parent_lexicon_details.defs;
+          } else if (entry.content && entry.content.senses) {
+            entry.content.senses.forEach(s => { if (s.definition) defs.push(s.definition); });
+          }
+
+          if (defs.length > 0) {
+            if (!dictionaries[dictName]) dictionaries[dictName] = [];
+            dictionaries[dictName].push({ headword, defs });
+          }
+        });
+      }
+      return dictionaries;
+    } catch (e) {
+      return {};
+    }
+  }
+
+  async function fetchWiktionaryDefinition(hebrewStr) {
+    try {
+      const url = `https://en.wiktionary.org/api/rest_v1/page/definition/${encodeURIComponent(hebrewStr)}`;
+      const response = await fetch(url);
+      if (!response.ok) return null;
+      
+      const data = await response.json();
+      if (!data.he) return null;
+
+      let entryGroups = [];
+      data.he.forEach(entry => {
+        let pos = entry.partOfSpeech || "Definition";
+        let defs = entry.definitions.map(d => d.definition);
+        entryGroups.push({ headword: pos, defs });
+      });
+
+      return entryGroups.length > 0 ? formatHomonymsLocally(entryGroups) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async function convertAndFetch() {
+    const rawInput = document.getElementById('arabicInput').value.trim();
+    const resultBox = document.getElementById('resultBox');
+    const rootTagBar = document.getElementById('rootTagBar');
+    const arabicDisplay = document.getElementById('arabicRoot');
+    const nabataeanDisplay = document.getElementById('nabataeanRoot');
+    const hebrewDisplay = document.getElementById('hebrewRoot');
+    const syriacDisplay = document.getElementById('syriacRoot');
+    const musnadDisplay = document.getElementById('musnadRoot');
+    const geezDisplay = document.getElementById('geezRoot');
+    const alternativesDisplay = document.getElementById('alternatives');
+    const breakdownBody = document.getElementById('breakdownBody');
+    const errorDisplay = document.getElementById('error');
+    const resultsContainer = document.getElementById('resultsContainer');
+
+    errorDisplay.innerText = '';
+    alternativesDisplay.innerHTML = '';
+
+    if (!rawInput) {
+      errorDisplay.innerText = 'Please enter an Arabic root or word.';
+      return;
+    }
+
+    const cleanInput = normalizeInput(rawInput);
+    const morphTags = detectRootMorphology(cleanInput);
+    const { primaryHebrew, syriac, nabataean, musnad, geez, breakdown } = convertArabicCognates(cleanInput);
+    const activeHebrew = primaryHebrew;
+
+    rootTagBar.innerHTML = morphTags.map(t => `<span class="root-type-badge">${t}</span>`).join('');
+    arabicDisplay.innerText = formatSurrogateAwareString(cleanInput);
+    nabataeanDisplay.innerText = formatSurrogateAwareString(nabataean);
+    hebrewDisplay.innerText = formatSurrogateAwareString(activeHebrew);
+    syriacDisplay.innerText = formatSurrogateAwareString(syriac);
+    musnadDisplay.innerText = formatSurrogateAwareString(musnad);
+    geezDisplay.innerText = formatSurrogateAwareString(geez);
+    
+    resultBox.style.display = 'block';
+
+    breakdownBody.innerHTML = breakdown.map((item, index) => {
+      let displayHe = item.he;
+      if (index === breakdown.length - 1 && FINAL_LETTERS[displayHe]) {
+        displayHe = FINAL_LETTERS[displayHe];
+      }
+      return `<tr>
+        <td><strong>${item.ar}</strong></td>
+        <td class="nabataean-cell">${item.nab}</td>
+        <td>${displayHe}</td>
+        <td>${item.syr}</td>
+        <td class="musnad-cell">${item.msn}</td>
+        <td>${item.gz}</td>
+        <td class="law-note">${item.note}</td>
+      </tr>`;
+    }).join('');
+
+    resultsContainer.innerHTML = '<div style="text-align: center; color: #64748b; padding: 20px;">Fetching lexicons across Semitic databases...</div>';
+
+    let [sefariaDicts, wikiRes] = await Promise.all([
+      fetchSefariaDefinitionsGrouped(activeHebrew),
+      fetchWiktionaryDefinition(activeHebrew)
+    ]);
+
+    lastAnalysis = {
+      root: cleanInput,
+      hebrew: activeHebrew,
+      syriac,
+      nabataean,
+      musnad,
+      geez,
+      sefaria: sefariaDicts,
+      tags: morphTags
+    };
+
+    resultsContainer.innerHTML = '';
+
+    let hasResults = false;
+
+    for (const [dictName, entries] of Object.entries(sefariaDicts)) {
+      hasResults = true;
+      resultsContainer.innerHTML += `
+        <div class="dict-card">
+          <div class="dict-header">
+            <span>${dictName}</span>
+            <span class="dict-source-tag">Sefaria Semitic Data</span>
+          </div>
+          <div class="dict-content">
+            ${formatHomonymsLocally(entries)}
+          </div>
+        </div>
+      `;
+    }
+
+    if (wikiRes) {
+      hasResults = true;
+      resultsContainer.innerHTML += `
+        <div class="dict-card">
+          <div class="dict-header">
+            <span>Wiktionary</span>
+            <span class="dict-source-tag">Modern Hebrew</span>
+          </div>
+          <div class="dict-content">${wikiRes}</div>
+        </div>
+      `;
+    }
+
+    if (!hasResults) {
+      resultsContainer.innerHTML += `<div style="text-align: center; color: #64748b; padding: 14px;">No direct Hebrew/Aramaic entries found for "${activeHebrew}". Use the Arabic lexicons portal in Section 2.</div>`;
+    }
+  }
+
+  function copyResearchBrief() {
+    if (!lastAnalysis) {
+      alert("Please perform an analysis first!");
+      return;
+    }
+    
+    let markdown = `### Semitic Comparative Brief: Root [ ${lastAnalysis.root} ]\n\n`;
+    markdown += `* **Arabic Root:** ${lastAnalysis.root}\n`;
+    markdown += `* **Nabataean Cognate:** ${lastAnalysis.nabataean}\n`;
+    markdown += `* **Hebrew Cognate:** ${lastAnalysis.hebrew}\n`;
+    markdown += `* **Syriac Cognate:** ${lastAnalysis.syriac}\n`;
+    markdown += `* **Musnad (Old South Arabian):** ${lastAnalysis.musnad}\n`;
+    markdown += `* **Ge'ez Cognate:** ${lastAnalysis.geez}\n`;
+    if (lastAnalysis.tags.length > 0) markdown += `* **Morphology:** ${lastAnalysis.tags.join(', ')}\n`;
+    markdown += `\n`;
+
+    if (Object.keys(lastAnalysis.sefaria).length > 0) {
+      markdown += `#### Lexicon Definitions\n`;
+      for (const [dict, entries] of Object.entries(lastAnalysis.sefaria)) {
+        markdown += `**${dict}**:\n`;
+        entries.forEach(e => {
+          e.defs.forEach(d => {
+            markdown += `* ${d.replace(/<\/?[^>]+(>|$)/g, "").trim()}\n`;
+          });
+        });
+      }
+    }
+
+    navigator.clipboard.writeText(markdown).then(() => {
+      alert("Research brief copied to clipboard in Markdown format!");
+    });
+  }
+
+  function toggleModeNotice() {
+    generateLexiconLinks();
+  }
+
+  function generateLexiconLinks() {
+    const rawInput = document.getElementById('lexiconInput').value.trim();
+    const resultBox = document.getElementById('lexiconResultBox');
+    const classicalContainer = document.getElementById('classicalLinks');
+    const bilingualContainer = document.getElementById('bilingualLinks');
+    const corpusContainer = document.getElementById('corpusLinks');
+    const searchType = document.querySelector('input[name="searchType"]:checked').value;
+
+    if (!rawInput) {
+      resultBox.style.display = 'none';
+      return;
+    }
+
+    const cleanInput = normalizeInput(rawInput);
+    const bwInput = getBuckwalter(cleanInput);
+    const encInput = encodeURIComponent(cleanInput);
+
+    resultBox.style.display = 'block';
+
+    let classicalHTML = '';
+    if (searchType === 'root') {
+      classicalHTML += `
+        <a class="link-tile" href="https://ejtaal.net/aa#bwq=${encodeURIComponent(bwInput)}" target="_blank">
+          <div>Ejtaal Root Jump<span class="desc">Lane's / Hans Wehr (#bwq=${bwInput})</span></div> &rarr;
+        </a>
+      `;
+    } else {
+      classicalHTML += `
+        <a class="link-tile" href="https://ejtaal.net/aa#bwq=${encodeURIComponent(bwInput)}" target="_blank">
+          <div>Ejtaal Exact Word Jump<span class="desc">Jump to word location (#bwq=${bwInput})</span></div> &rarr;
+        </a>
+      `;
+    }
+
+    let bilingualHTML = `
+      <a class="link-tile" href="https://www.almaany.com/ar/dict/ar-ar/${encInput}/" target="_blank">
+        <div>Al-Ma'any (ar-ar)<span class="desc">Arabic-Arabic Dictionary</span></div> &rarr;
+      </a>
+      <a class="link-tile" href="https://www.almaany.com/ar/dict/ar-en/${encInput}/" target="_blank">
+        <div>Al-Ma'any (ar-en)<span class="desc">Arabic-English Lexicon</span></div> &rarr;
+      </a>
+      <a class="link-tile" href="https://www.almaany.com/ar/dict/ar-ur/${encInput}/" target="_blank">
+        <div>Al-Ma'any (ar-ur)<span class="desc">Arabic-Urdu Dictionary</span></div> &rarr;
+      </a>
+      <a class="link-tile" href="https://www.arabdict.com/en/english-arabic/${encInput}" target="_blank">
+        <div>Arabdict (ar-en)<span class="desc">Comprehensive Modern Lexicon</span></div> &rarr;
+      </a>
+      <a class="link-tile" href="https://dictionary.reverso.net/arabic-english/${encInput}" target="_blank">
+        <div>Reverso Dictionary<span class="desc">Arabic-English Definitions</span></div> &rarr;
+      </a>
+      <a class="link-tile" href="https://context.reverso.net/translation/arabic-english/${encInput}" target="_blank">
+        <div>Reverso Translation<span class="desc">Contextual Sentence Examples</span></div> &rarr;
+      </a>
+    `;
+
+    let corpusHTML = '';
+    if (searchType === 'root') {
+      corpusHTML += `
+        <a class="link-tile" href="https://corpus.quran.com/search.jsp?q=root%3A${encInput}" target="_blank">
+          <div>Quranic Corpus (Root)<span class="desc">Root concordance & verse list</span></div> &rarr;
+        </a>
+        <a class="link-tile" href="https://quran.com/search?q=${encInput}" target="_blank">
+          <div>Quran.com Search<span class="desc">Verse occurrences</span></div> &rarr;
+        </a>
+      `;
+    } else {
+      corpusHTML += `
+        <a class="link-tile" href="https://corpus.quran.com/search.jsp?q=${encInput}" target="_blank">
+          <div>Quranic Corpus (Word)<span class="desc">Exact token concordance</span></div> &rarr;
+        </a>
+        <a class="link-tile" href="https://quranmorphology.com/textsearch/ar/${encInput}" target="_blank">
+          <div>Quran Morphology<span class="desc">Segmented word-level analysis</span></div> &rarr;
+        </a>
+      `;
+    }
+
+    classicalContainer.innerHTML = classicalHTML;
+    bilingualContainer.innerHTML = bilingualHTML;
+    corpusContainer.innerHTML = corpusHTML;
+  }
+</script>
+
+<!-- ==================== Theme toggle & decorative frieze ==================== -->
+<script>
+  (function () {
+    const root = document.documentElement;
+    const knob = document.getElementById('themeKnob');
+    const STORAGE_KEY = 'semitic-explorer-theme';
+
+    function applyTheme(isDark) {
+      root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      if (knob) knob.textContent = isDark ? '☾' : '☀';
+    }
+
+    let saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { saved = null; }
+
+    applyTheme(saved === 'dark');
+
+    window.toggleTheme = function () {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      const next = !isDark;
+      applyTheme(next);
+      try { localStorage.setItem(STORAGE_KEY, next ? 'dark' : 'light'); } catch (e) { /* storage unavailable */ }
+    };
+  })();
+
+  (function () {
+    const glyphSets = [
+      { label: 'ARB', text: 'كتب' },
+      { label: 'NAB', text: '𐢏𐢞𐢁' },
+      { label: 'HEB', text: 'כתב' },
+      { label: 'SYR', text: 'ܟܬܒ' },
+      { label: 'MSN', text: '𐩫𐩩𐩨' },
+      { label: 'GEZ', text: 'ጸሐፈ' }
+    ];
+    const classFor = { HEB: 'hebrew-font', SYR: 'syriac-font', NAB: 'nabataean-font', MSN: 'musnad-font' };
+    const track = document.getElementById('glyphFriezeTrack');
+    if (!track) return;
+
+    const cell = (g) => `<span class="${classFor[g.label] || ''}">${g.label} ${g.text}</span>`;
+    const row = glyphSets.map(cell).join('');
+    track.innerHTML = row + row;
+  })();
+</script>
+
+</body>
+</html>
