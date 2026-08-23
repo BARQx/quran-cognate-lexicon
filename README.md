@@ -33,6 +33,9 @@ You can switch between “Root” mode and “Exact Word” mode depending on wh
 
 ## Using it
 
+Access the web portal directly in your browser:  
+👉 **[https://barqx.github.io/quran-cognate-lexicon](https://barqx.github.io/quran-cognate-lexicon)**
+
 - A modern web browser (Chrome, Firefox, Safari, Edge, etc.)
 - An internet connection (for dictionary lookups)
 
