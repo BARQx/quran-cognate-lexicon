@@ -6,7 +6,7 @@ This tool is designed to help you uncover the deeper meanings of Qur'anic words 
 
 Instead of spending hours cross-referencing multiple heavy lexicons on your own, this app automates the entire research process. You simply type in a Qur'anic Arabic root, and the tool instantly identifies its corresponding Hebrew form. It then fetches real, live dictionary definitions directly from trusted lexicons, bringing hidden historical insights right to your screen in seconds.
 
-![Screenshot 2026-08-23 143912.png](_attachments/Screenshot_2026-08-23_143912.png)
+![Screenshot 2026-08-25 125822.png](_attachments/Screenshot_2026-08-23_143912.png)
 ![Screenshot 2026-08-23 143949.png](_attachments/Screenshot_2026-08-23_143949.png)
 
 ## What it does
