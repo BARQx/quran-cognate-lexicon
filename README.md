@@ -6,8 +6,8 @@ This tool is designed to help you uncover the deeper meanings of Qur'anic words 
 
 Instead of spending hours cross-referencing multiple heavy lexicons on your own, this app automates the entire research process. You simply type in a Qur'anic Arabic root, and the tool instantly identifies its corresponding Hebrew form. It then fetches real, live dictionary definitions directly from trusted lexicons, bringing hidden historical insights right to your screen in seconds.
 
-![Screenshot 2026-08-25 125822.png](_attachments/Screenshot_2026-08-25_125822.png)
-![Screenshot 2026-08-23 143949.png](_attachments/Screenshot_2026-08-23_143949.png)
+![sc1.png](_attachments/sc1.png)
+![sc2.png](_attachments/sc2.png)
 
 ## What it does
 
@@ -34,7 +34,7 @@ You can switch between “Root” mode and “Exact Word” mode depending on wh
 ## Using it
 
 Access the web portal directly in your browser:  
-<a href="https:/qcl.barqx.me" target="_blank">https://qcl.barqx.me</a>
+<a href="https://barqx.github.io/quran-cognate-lexicon" target="_blank">https://barqx.github.io/quran-cognate-lexicon</a>
 
 - A modern web browser (Chrome, Firefox, Safari, Edge, etc.)
 - An internet connection (for dictionary lookups)
