@@ -34,7 +34,7 @@ You can switch between “Root” mode and “Exact Word” mode depending on wh
 ## Using it
 
 Access the web portal directly in your browser:  
-<a href="https://barqx.github.io/quran-cognate-lexicon" target="_blank">https://barqx.github.io/quran-cognate-lexicon</a>
+<a href="https:/qcl.barqx.me" target="_blank">https://qcl.barqx.me</a>
 
 - A modern web browser (Chrome, Firefox, Safari, Edge, etc.)
 - An internet connection (for dictionary lookups)
