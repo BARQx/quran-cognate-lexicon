@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <!-- Primary Search Engine Optimization -->
 <title>Qur'anic Arabic Cognate & Lexicon Portal | Comparative Semitic Root Analyzer</title>
 <meta name="title" content="Qur'anic Arabic Cognate & Lexicon Portal | Comparative Semitic Root Analyzer">
@@ -13,8 +14,10 @@
 <meta name="robots" content="index, follow">
 <meta name="language" content="English">
 
+
 <!-- Canonical URL -->
 <link rel="canonical" href="https://qcl.barqx.me/">
+
 
 <!-- Open Graph / Facebook / WhatsApp Preview Card -->
 <meta property="og:type" content="website">
@@ -22,11 +25,13 @@
 <meta property="og:title" content="Qur'anic Arabic Cognate & Lexicon Portal">
 <meta property="og:description" content="Automated comparative Semitic root engine: map Qur'anic Arabic to Hebrew, Ge'ez, and ancient epigraphic scripts while searching classical lexicons in one click.">
 
+
 <!-- Twitter / X Preview Card -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://qcl.barqx.me/">
 <meta property="twitter:title" content="Qur'anic Arabic Cognate & Lexicon Portal">
 <meta property="twitter:description" content="Discover Hebrew cognates and ancient scripts for Qur'anic roots, and cross-reference major Arabic dictionaries instantly.">
+
 
 <!-- JSON-LD Structured Data for Google Rich Results -->
 <script type="application/ld+json">
@@ -58,11 +63,13 @@
 }
 </script>
   
+  
   <!-- Web Fonts for Ancient Epigraphic Scripts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Nabataean&family=Noto+Sans+Old+South+Arabian&family=Noto+Sans+Syriac&family=SBL+Hebrew&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Nabataean&family=Noto+Sans+Old+South+Arabian&family=Noto+Sans+Syriac&family=SBL+Hebrew&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
+  
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -70,6 +77,7 @@
   <script defer src="/_vercel/insights/script.js"></script>
 
   <style>
+    
     /* ============================================================
        Token system: light = papyrus & cinnabar ink
                       dark:  basalt tablet & torchlight ochre
@@ -79,6 +87,8 @@
       --bg-color: #f4ecd8;
       --bg-color-alt: #ece0c4;
       --card-bg: #fffcf4;
+      --card-bg-folio: #fdf9ee;
+      --card-bg-ledger: #f0e6cc;
       --primary: #2b2118;
       --accent: #a8542f;
       --accent-hover: #8f4526;
@@ -95,31 +105,82 @@
       --danger: #b3311c;
       --link-bg: #fffcf4;
       --shadow: rgba(43, 33, 24, 0.08);
+      --alert-bg: #fdf1cf;
+      --alert-border: #e8c266;
+      --alert-text: #6b4f10;
+      --accent3: #a4243b;
+      --accent3-hover: #821b2d;
+      --accent3-solid: #a4243b; /* light mode already passes AA (7.26:1) with white text at this weight */
+      
+      /* Per-script identity colors — light mode */
+      --script-arb: #2b2118;
+      --script-heb: #2c4870;
+      --script-syr: #8a3e23;
+      --script-nab: #75531a;
+      --script-msn: #8f3a2e;
+      --script-gez: #3d5c3a;
+      --rule-line: rgba(43, 33, 24, 0.045);
       --font-display: 'Fraunces', 'Times New Roman', serif;
       --font-body: 'Work Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
+      /* Type scale (1.2 ratio, base 1rem) */
+      --fs-xs: 0.75rem;
+      --fs-sm: 0.85rem;
+      --fs-base: 1rem;
+      --fs-md: 1.15rem;
+      --fs-lg: 1.4rem;
+      --fs-xl: 1.85rem;
+      --fs-2xl: 2.75rem;
+      
+      /* Spacing scale (4px base unit) */
+      --sp-1: 4px;
+      --sp-2: 8px;
+      --sp-3: 12px;
+      --sp-4: 16px;
+      --sp-5: 20px;
+      --sp-6: 24px;
+      --sp-7: 32px;
+      --sp-8: 40px;
     }
 
     html[data-theme="dark"] {
       color-scheme: dark;
-      --bg-color: #14181c;
-      --bg-color-alt: #191e23;
-      --card-bg: #1d2329;
+      --bg-color: #0d1013;
+      --bg-color-alt: #14181c;
+      --card-bg: #181d22;
+      --card-bg-folio: #1b2127;
+      --card-bg-ledger: #14181c;
       --primary: #ece4d0;
-      --accent: #e0864f;
-      --accent-hover: #ec9a68;
+      --accent: #f2903f;
+      --accent-hover: #ff9d4d;
       --accent-soft: #33261c;
       --accent2: #5fa8a8;
       --accent2-soft: #1c2c2c;
       --border: #2c343b;
       --text: #ece4d0;
       --muted: #93998f;
-      --box-bg: #232a31;
+      --box-bg: #1d2329;
       --badge-bg: #1c2c2c;
       --badge-text: #7fc7c7;
       --tag-bg: #262e35;
       --danger: #f0715c;
       --link-bg: #1d2329;
-      --shadow: rgba(0, 0, 0, 0.35);
+      --shadow: rgba(0, 0, 0, 0.5);
+      --alert-bg: #3a2f10;
+      --alert-border: #7a5f1e;
+      --alert-text: #f0d998;
+      --accent3: #e0687e;
+      --accent3-hover: #ea7d92;
+      --accent3-solid: #c14a5f; /* darker variant for solid-fill buttons — plain --accent3 fails AA (3.26:1) with white text at this weight */
+      
+      /* Per-script identity colors — dark mode (brightened for contrast) */
+      --script-arb: #ece4d0;
+      --script-heb: #7ea3d6;
+      --script-syr: #d68f5f;
+      --script-nab: #d6ac5f;
+      --script-msn: #d67d6f;
+      --script-gez: #7fb37a;
+      --rule-line: rgba(0, 0, 0, 0.18);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -142,20 +203,20 @@
 
     h1, h2, h3, h4 { font-family: var(--font-display); }
 
-    .container { max-width: 1000px; margin: 0 auto; width: 100%; flex: 1 0 auto; }
-    header { text-align: center; margin-bottom: 24px; }
-    .container { position: relative; }
-
-    header { position: relative; padding-top: 6px; }
+    .container { max-width: 1000px; margin: 0 auto; width: 100%; flex: 1 0 auto; position: relative; }
+    header { text-align: center; margin-bottom: 24px; position: relative; padding-top: 6px; }
+    
     h1 {
-      font-size: 1.85rem;
-      font-weight: 700;
+      font-size: var(--fs-2xl);
+      font-weight: 800;
+      line-height: 1.08;
       color: var(--primary);
-      margin-bottom: 6px;
-      letter-spacing: 0.02em;
+      margin-bottom: var(--sp-2);
+      letter-spacing: 0.005em;
     }
-    p.subtitle { color: var(--muted); font-size: 0.85rem; font-family: var(--font-body); }
+    p.subtitle { color: var(--muted); font-size: var(--fs-sm); font-family: var(--font-body); }
 
+    
     /* Theme toggle - a little stone switch */
     .theme-toggle {
       position: absolute;
@@ -188,34 +249,31 @@
     }
     html[data-theme="dark"] .theme-toggle .knob { transform: translateX(22px); }
 
-    /* Glyph frieze - a signature lintel of the six scripts drifting like an inscription */
-    .glyph-frieze {
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-color-alt);
-      margin: 16px 0 20px 0;
-      padding: 10px 0;
-      white-space: nowrap;
-      user-select: none;
+    
+    /* Ayah header — Qur'an 96:1, static Arabic line, blends with page background */
+    .ayah-fade {
+      width: 100%;
+      background: transparent;
+      padding: 20px 16px 12px 16px;
+      text-align: center;
     }
-    .glyph-frieze .track {
-      display: inline-flex;
-      gap: 34px;
-      animation: frieze-scroll 32s linear infinite;
-      will-change: transform;
+    .ayah-fade-inner { max-width: 1000px; margin: 0 auto; }
+    .ayah-fade-track { display: flex; align-items: center; justify-content: center; }
+	
+    @font-face {
+      font-family: 'Al Qalam Quran Majeed Web Regular';
+      src: url('fonts/AlQalamQuranMajeedWebRegular.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
     }
-    .glyph-frieze span {
-      font-size: 1.15rem;
-      color: var(--muted);
-      opacity: 0.75;
-    }
-    @keyframes frieze-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .glyph-frieze .track { animation: none; }
+	
+    .ayah-line[lang="ar"] {
+      font-family: 'Al Qalam Quran Majeed Web Regular', 'Times New Roman', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent3);
+      line-height: 1.6;
     }
 
     .card {
@@ -228,7 +286,77 @@
       transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .card h2 { font-size: 1.25rem; font-weight: 600; color: var(--primary); margin-bottom: 4px; }
+    /* Section 1 = "folio": soft, rounded, generous — a manuscript page.
+       Subtle ruled-paper texture (very low-opacity horizontal lines) reinforces
+       the reading/manuscript feel without competing with content. */
+    .card-folio {
+      background-color: var(--card-bg-folio);
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 31px,
+        var(--rule-line) 31px,
+        var(--rule-line) 32px
+      );
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 4px 16px var(--shadow);
+    }
+
+    /* Section 2 = "ledger": sharp corners, heavier rule, tighter — a reference index. */
+    .card-ledger {
+      background: var(--card-bg-ledger);
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      padding: 22px;
+      box-shadow: 0 2px 6px var(--shadow);
+    }
+
+    .card-header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .card h2 { font-size: 1.25rem; font-weight: 600; color: var(--primary); margin-bottom: 0; }
+    .card-ledger h2 { text-transform: uppercase; letter-spacing: 0.06em; font-size: var(--fs-md); }
+
+    
+    .info-pill {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 6px 9px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 30px;
+      line-height: 1;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .info-pill::before {
+      content: "i";
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      font-family: Georgia, serif;
+      font-size: 0.7rem;
+      font-style: italic;
+      font-weight: 700;
+      height: 15px;
+      line-height: 14px;
+      text-align: center;
+      width: 15px;
+    }
+    .info-pill::after { content: "→"; font-size: 0.9rem; }
+    .info-pill:hover, .info-pill:focus-visible {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-1px);
+    }
 
     .search-box {
       display: flex;
@@ -271,6 +399,7 @@
       outline-offset: 2px;
     }
 
+    
     /* Script Render Styles */
     .script-grid {
       display: grid;
@@ -282,6 +411,7 @@
     .script-box {
       background: var(--box-bg);
       border: 1px solid var(--border);
+      border-left: 4px solid var(--border);
       border-radius: 8px;
       padding: 10px;
       text-align: center;
@@ -289,13 +419,59 @@
     }
     .script-box:hover { transform: translateY(-2px); border-color: var(--accent2); }
 
-    .script-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .script-label { font-size: var(--fs-xs); color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .script-family {
+      display: block;
+      font-size: 0.62rem;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+      opacity: 0.65;
+      margin-top: 1px;
+    }
     .script-value { font-size: 1.6rem; font-weight: bold; margin-top: 4px; min-height: 40px; color: var(--primary); }
 
     .hebrew-font { font-family: 'SBL Hebrew', 'Times New Roman', serif; }
     .syriac-font { font-family: 'Noto Sans Syriac', serif; }
     .nabataean-font, .nabataean-cell { font-family: 'Noto Sans Nabataean', sans-serif; }
     .musnad-font, .musnad-cell { font-family: 'Noto Sans Old South Arabian', sans-serif; }
+
+    
+    /* Per-script identity coloring — left border on result boxes, text tint in table cells */
+    .script-box.script-arb { border-left-color: var(--script-arb); }
+    .script-box.script-heb { border-left-color: var(--script-heb); }
+    .script-box.script-syr { border-left-color: var(--script-syr); }
+    .script-box.script-nab { border-left-color: var(--script-nab); }
+    .script-box.script-msn { border-left-color: var(--script-msn); }
+    .script-box.script-gez { border-left-color: var(--script-gez); }
+    .script-box.script-heb .script-value { color: var(--script-heb); }
+    .script-box.script-syr .script-value { color: var(--script-syr); }
+    .script-box.script-nab .script-value { color: var(--script-nab); }
+    .script-box.script-msn .script-value { color: var(--script-msn); }
+    .script-box.script-gez .script-value { color: var(--script-gez); }
+
+    .hebrew-cell { color: var(--script-heb); }
+    .syriac-cell { color: var(--script-syr); }
+    .nabataean-cell { color: var(--script-nab); }
+    .musnad-cell { color: var(--script-msn); }
+    .geez-cell { color: var(--script-gez); }
+
+    
+    /* Motion signature: "ink settling" — plays once per new analysis, staggered per box */
+    @keyframes inkSettle {
+      0% { opacity: 0; transform: translateY(4px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .script-box.ink-settle { animation: inkSettle 0.32s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .script-box.ink-settle:nth-child(1) { animation-delay: 0.00s; }
+    .script-box.ink-settle:nth-child(2) { animation-delay: 0.04s; }
+    .script-box.ink-settle:nth-child(3) { animation-delay: 0.08s; }
+    .script-box.ink-settle:nth-child(4) { animation-delay: 0.12s; }
+    .script-box.ink-settle:nth-child(5) { animation-delay: 0.16s; }
+    .script-box.ink-settle:nth-child(6) { animation-delay: 0.20s; }
+    @media (prefers-reduced-motion: reduce) {
+      .script-box.ink-settle { animation: none; }
+    }
 
     .tag-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
     .root-type-badge {
@@ -307,6 +483,7 @@
       font-weight: 600;
     }
 
+    
     /* Breakdown Table */
     .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.95rem; min-width: 560px; }
@@ -318,6 +495,7 @@
 
     summary { color: var(--accent); }
 
+    
     /* Dictionary Cards */
     .dict-card {
       border: 1px solid var(--border);
@@ -338,19 +516,61 @@
     }
 
     .dict-source-tag { font-size: 0.75rem; background: var(--tag-bg); color: var(--muted); padding: 2px 6px; border-radius: 4px; }
+    .dict-source-link { color: var(--accent); font-size: 0.75rem; text-decoration: none; }
+    .dict-source-link:hover { text-decoration: underline; }
     .dict-content { padding: 14px; }
     .def-list { margin-left: 20px; margin-top: 6px; }
     .def-list li { margin-bottom: 4px; }
     .homonym-title { color: var(--primary); }
 
-    .btn-secondary {
-      background: var(--tag-bg);
-      color: var(--text);
-      margin-top: 10px;
-    }
+    .btn-secondary { background: var(--tag-bg); color: var(--text); margin-top: 10px; }
     .btn-secondary:hover { background: var(--border); }
 
+    .btn-accent2 { background: var(--accent2); color: #fff; margin-top: 10px; }
+    .btn-accent2:hover { filter: brightness(1.1); }
+
+    /* Promoted CTA — the maroon accent that also anchors the ayah header,
+       used deliberately once: the primary "output" action of an analysis. */
+    .btn-accent3 { background: var(--accent3-solid); color: #fff; margin-top: 10px; font-weight: 700; }
+    .btn-accent3:hover { background: var(--accent3-hover); }
+
+    .try-row, .research-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+    .try-label, .section-guidance { color: var(--muted); font-size: 0.78rem; }
+    .sample-root, .research-action {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      padding: 5px 8px;
+    }
+    .sample-root:hover, .research-action:hover { background: var(--accent-soft); border-color: var(--accent); }
+    .research-shelf { border-top: 1px solid var(--border); margin-top: 16px; padding-top: 12px; }
+    .research-shelf[hidden] { display: none; }
+    .shelf-title { color: var(--primary); font-family: var(--font-display); font-size: 0.95rem; margin-bottom: 7px; }
+    .shelf-roots { display: flex; flex-wrap: wrap; gap: 6px; }
+    .shelf-root { background: var(--tag-bg); border: 1px solid var(--border); border-radius: 999px; color: var(--text); font-size: 0.82rem; padding: 5px 9px; }
+    .section-guidance { margin: -4px 0 10px; line-height: 1.45; }
+    .group-hint { color: var(--muted); font-size: 0.75rem; margin: 0 0 6px; }
+    .open-all { background: var(--accent2); color: #fff; font-size: 0.82rem; margin: 0 0 12px; padding: 8px 11px; }
+    .open-all:hover { filter: brightness(1.1); }
+    .footer-text-link { color: var(--accent); text-decoration: none; }
+    .footer-text-link:hover { text-decoration: underline; }
+
     .error-msg { color: var(--danger); font-size: 0.9rem; margin-top: 5px; }
+
+    .alert-info {
+      background: var(--alert-bg);
+      border: 1px solid var(--alert-border);
+      color: var(--alert-text);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .analysis-context { color: var(--muted); font-size: 0.82rem; margin: 10px 0 4px; }
+    .analysis-context strong { color: var(--text); }
 
     .link-tile {
       display: flex;
@@ -358,8 +578,9 @@
       align-items: center;
       padding: 10px 12px;
       border: 1px solid var(--border);
+      border-left: 3px solid var(--border);
       border-radius: 6px;
-      margin-bottom: 8px;
+      margin-bottom: 0;
       text-decoration: none;
       color: var(--text);
       background: var(--link-bg);
@@ -368,6 +589,23 @@
     .link-tile:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateX(2px); }
     .link-tile .desc { display: block; font-size: 0.75rem; color: var(--muted); }
 
+    /* Section 2 categories reuse the site's existing 3-accent system rather than
+       borrowing script colors that wouldn't mean anything in this context:
+       classical dictionaries = ink accent, cross-language tools = teal (already
+       tied to CAL/"modern reference" elsewhere), corpus/scripture = the same
+       maroon that anchors the ayah header. */
+    .link-tile.tile-classical { border-left-color: var(--accent); }
+    .link-tile.tile-bilingual { border-left-color: var(--accent2); }
+    .link-tile.tile-corpus { border-left-color: var(--accent3); }
+
+    .link-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    
     /* Footer — deliberately set apart from the card/tool styling above */
     .site-footer {
       border-top: 1px dashed var(--border);
@@ -377,31 +615,139 @@
       flex-shrink: 0;
       width: 100%;
     }
-    .footer-inner {
-      max-width: 700px;
-      margin: 0 auto;
+    .footer-inner { max-width: 1000px; margin: 0 auto; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 28px;
+      padding-bottom: 18px;
+    }
+    .footer-heading {
+      color: var(--primary);
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .footer-copy {
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.55;
+    }
+    .footer-author {
+      align-items: center;
+      display: flex;
+      font-size: 0.72rem;
+      font-style: normal;
+      flex-wrap: wrap;
+      gap: 4px 8px;
+      justify-content: center;
+      color: var(--muted);
+      padding-top: 4px;
       text-align: center;
     }
-    .footer-why {
+    .footer-credit:not(:first-child)::before {
+      color: var(--border);
+      content: "·";
+      margin-right: 8px;
+    }
+    .footer-author a { color: var(--accent); text-decoration: none; }
+    .footer-author a:hover { text-decoration: underline; }
+	
+    .manuscript-hr {
+      position: relative;
+      height: 1px;
+      max-width: 380px;
+      margin: 16px auto 0 auto;
+      background: linear-gradient(
+        90deg, 
+        transparent 0%, 
+        var(--border) 20%, 
+        var(--accent3) 50%, 
+        var(--border) 80%, 
+        transparent 100%
+      );
+      opacity: 0.75;
+    }
+
+    .manuscript-hr::after {
+      content: "✦";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--bg-color);
+      color: var(--accent3);
+      padding: 0 8px;
+      font-size: var(--fs-xs);
+      transition: background-color 0.25s ease;
+    }
+
+    
+    .mobile-dialog {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card-bg);
+      color: var(--text);
+      padding: 24px;
+      max-width: 480px;
+      width: 90%;
+      margin: auto;
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+
+    .mobile-dialog::backdrop {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(3px);
+    }
+
+    .dialog-content h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .dialog-content p {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+
+    .dialog-list {
+      margin: 0 0 16px 18px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .dialog-list li { margin-bottom: 6px; }
+
+    .dialog-note {
       font-size: 0.78rem;
       font-style: italic;
       color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 14px;
+      background: var(--box-bg);
+      padding: 10px 12px;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent);
+      margin-bottom: 18px;
     }
-    .footer-author {
-      font-size: 0.72rem;
-      font-style: normal;
-      color: var(--muted);
-      padding-top: 12px;
-      border-top: 1px solid var(--border);
-    }
-    .footer-author a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .footer-author a:hover { text-decoration: underline; }
 
+    .close-btn {
+      width: 100%;
+      padding: 11px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .close-btn:hover { background: var(--accent-hover); }
+
+    
     /* ==================== Mobile responsiveness ==================== */
     @media (max-width: 640px) {
       body { padding: 12px; }
@@ -411,24 +757,56 @@
       h1 { font-size: 1.5rem; }
       p.subtitle { font-size: 0.85rem; }
       .card { padding: 16px; border-radius: 10px; }
-      .card h2 { font-size: 1.2rem; }
+      .card-folio, .card-ledger { padding: 16px; border-radius: 12px; }
+      .card h2 { font-size: 1.1rem; }
       .search-box { flex-direction: column; }
       .search-box button { width: 100%; }
+      .try-row { gap: 5px; }
       .script-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .script-value { font-size: 1.25rem; min-height: 32px; }
+      .script-family { font-size: 0.55rem; }
       .dict-header { flex-direction: column; align-items: flex-start; gap: 4px; }
       .link-tile { flex-direction: row; }
       th, td { padding: 8px 6px; font-size: 0.85rem; }
-      .glyph-frieze span { font-size: 0.95rem; }
+      .ayah-line[lang="ar"] { font-size: 1.4rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 18px; }
+      .card-header-flex { align-items: flex-start; flex-direction: column; gap: 9px; }
+      .info-pill { align-self: flex-start; }
+      .footer-author { flex-direction: column; font-size: 0.75rem; gap: 3px; line-height: 1.45; }
+      .footer-credit:not(:first-child)::before { content: none; }
+
+      
+      .mobile-dialog {
+        margin-bottom: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        width: 100%;
+        max-width: 100%;
+        animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      @keyframes slideUp {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+      }
     }
 
     @media (max-width: 400px) {
       .script-grid { grid-template-columns: repeat(2, 1fr); }
       h1 { font-size: 1.3rem; }
+      .script-family { display: none; }
     }
   </style>
 </head>
 <body>
+
+<div class="ayah-fade">
+  <div class="ayah-fade-inner">
+    <div class="ayah-fade-track">
+      <span class="ayah-line" lang="ar" dir="rtl">﴿اِقْرَاْ بِاسْمِ رَبِّكَ الَّذِیْ خَلَق﴾</span>
+    </div>
+    <div class="manuscript-hr"></div>
+  </div>
+</div>
 
 <div class="container">
   <header>
@@ -439,51 +817,64 @@
     <p class="subtitle">Cross-language root analysis and direct lookup across classical dictionaries.</p>
   </header>
 
-  <div class="glyph-frieze" aria-hidden="true">
-    <div class="track" id="glyphFriezeTrack"></div>
-  </div>
-
+  
   <!-- Section 1: Root Analysis -->
-  <div class="card">
-    <h2>1. Comparative Root Analyzer</h2>
+  <div class="card card-folio">
+    <div class="card-header-flex">
+      <h2>1. Comparative Root Analyzer</h2>
+      <button class="info-pill" onclick="document.getElementById('sec1-dialog').showModal()">
+        About this tool
+      </button>
+    </div>
     <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;">Enter an Arabic root (e.g., س ل م، س-ل-م, سلم)</p>
     
     <div class="search-box">
       <input type="text" id="arabicInput" dir="rtl" placeholder="Enter Arabic root" onkeypress="if(event.key==='Enter') convertAndFetch()">
       <button onclick="convertAndFetch()">Analyze Root</button>
     </div>
+    <div class="try-row" aria-label="Sample roots for the comparative analyzer">
+      <span class="try-label">Try an example:</span>
+      <button class="sample-root" type="button" dir="rtl" onclick="trySampleRoot('كتب')">كتب</button>
+      <button class="sample-root" type="button" dir="rtl" onclick="trySampleRoot('قال')">قال</button>
+      <button class="sample-root" type="button" dir="rtl" onclick="trySampleRoot('مدد')">مدد</button>
+      <button class="sample-root" type="button" dir="rtl" onclick="trySampleRoot('سجد')">سجد</button>
+      <button class="sample-root" type="button" dir="rtl" onclick="trySampleRoot('رحم')">رحم</button>
+    </div>
     <div id="error" class="error-msg"></div>
 
     <div id="resultBox" style="display:none;">
       <div id="rootTagBar" class="tag-bar"></div>
 
+      
       <!-- Unified Language Sequence across display boxes and table: Arabic -> Nabataean -> Hebrew -> Syriac -> Musnad -> Ge'ez -->
       <div class="script-grid">
-        <div class="script-box">
-          <div class="script-label">Arabic</div>
+        <div class="script-box script-arb">
+          <div class="script-label">Arabic<span class="script-family">Central Semitic</span></div>
           <div id="arabicRoot" class="script-value"></div>
         </div>
-        <div class="script-box">
-          <div class="script-label">Nabataean</div>
+        <div class="script-box script-nab">
+          <div class="script-label">Nabataean<span class="script-family">NW Semitic · Aramaic</span></div>
           <div id="nabataeanRoot" class="script-value nabataean-font"></div>
         </div>
-        <div class="script-box">
-          <div class="script-label">Hebrew</div>
+        <div class="script-box script-heb">
+          <div class="script-label">Hebrew<span class="script-family">NW Semitic · Canaanite</span></div>
           <div id="hebrewRoot" class="script-value hebrew-font"></div>
         </div>
-        <div class="script-box">
-          <div class="script-label">Syriac</div>
+        <div class="script-box script-syr">
+          <div class="script-label">Syriac<span class="script-family">NW Semitic · Aramaic</span></div>
           <div id="syriacRoot" class="script-value syriac-font"></div>
         </div>
-        <div class="script-box">
-          <div class="script-label">Musnad (Sabaic)</div>
+        <div class="script-box script-msn">
+          <div class="script-label">Musnad (Sabaic)<span class="script-family">South Semitic · Sayhadic</span></div>
           <div id="musnadRoot" class="script-value musnad-font"></div>
         </div>
-        <div class="script-box">
-          <div class="script-label">Ge'ez</div>
+        <div class="script-box script-gez">
+          <div class="script-label">Ge'ez<span class="script-family">South Semitic · Ethiosemitic</span></div>
           <div id="geezRoot" class="script-value"></div>
         </div>
       </div>
+
+      <p id="analysisContext" class="analysis-context"><strong>Proposed Hebrew cognate:</strong> generated from regular sound correspondences; live dictionary evidence is loading.</p>
 
       <div id="alternatives" style="font-size:0.85rem; margin-bottom:10px;"></div>
 
@@ -507,55 +898,141 @@
         </div>
       </details>
 
-      <button class="btn-secondary" onclick="copyResearchBrief()">Copy Research Brief (Markdown)</button>
+      <button class="btn-accent3" onclick="copyResearchBrief()">Copy Research Brief (Markdown)</button>
+      <button class="btn-accent2" onclick="openCalLexicon()">Look up in CAL (Comprehensive Aramaic Lexicon)</button>
+      <button class="btn-secondary" onclick="copyAnalysisLink()">Copy Analysis Link</button>
 
       <h3 style="margin-top:20px; font-size:1.1rem;">Lexicon Lookup (Sefaria & Wiktionary)</h3>
       <div id="resultsContainer"></div>
     </div>
+    <section id="researchShelf" class="research-shelf" hidden>
+      <h3 class="shelf-title">Recent research</h3>
+      <div id="recentRoots" class="shelf-roots"></div>
+      <div class="research-actions" style="margin-top:9px;">
+        <button class="research-action" type="button" onclick="exportResearchHistory()">Export history</button>
+        <button class="research-action" type="button" onclick="clearResearchHistory()">Clear history</button>
+      </div>
+    </section>
   </div>
 
+  
   <!-- Section 2: External Lexicon Links -->
-  <div class="card">
-    <h2>2. External Arabic Lexicons Portal</h2>
-    <div style="margin-bottom:10px;">
-      <label><input type="radio" name="searchType" value="root" checked onclick="toggleModeNotice()"> Root Mode</label>
-      <label style="margin-left:15px;"><input type="radio" name="searchType" value="word" onclick="toggleModeNotice()"> Exact Word Mode</label>
+  <div class="card card-ledger">
+    <div class="card-header-flex">
+      <h2>2. External Arabic Lexicons Portal</h2>
+      <button class="info-pill" onclick="document.getElementById('sec2-dialog').showModal()">
+        About this portal
+      </button>
     </div>
     <div class="search-box">
-      <input type="text" id="lexiconInput" dir="rtl" placeholder="Enter word or root for direct dictionary links" onkeyup="generateLexiconLinks()">
+      <input type="text" id="lexiconInput" dir="rtl" placeholder="Enter Arabic word or root" onkeyup="generateLexiconLinks()">
+    </div>
+    <p class="section-guidance"><strong>Root</strong> searches help trace a word family; enter an <strong>exact word</strong> when you want that specific form in dictionaries and Qur'anic tools.</p>
+    <div class="try-row" aria-label="Sample roots for Arabic lexicon lookup">
+      <span class="try-label">Try an example:</span>
+      <button class="sample-root" type="button" dir="rtl" onclick="tryLexiconSample('رحمة')">رحمة</button>
+      <button class="sample-root" type="button" dir="rtl" onclick="tryLexiconSample('هدى')">هدى</button>
+      <button class="sample-root" type="button" dir="rtl" onclick="tryLexiconSample('صبر')">صبر</button>
+      <button class="sample-root" type="button" dir="rtl" onclick="tryLexiconSample('عدل')">عدل</button>
     </div>
 
     <div id="lexiconResultBox" style="display:none;">
+      <button class="open-all" type="button" onclick="copyArabicSourceLinks()">Copy all source links</button>
       <h4 style="margin:10px 0 5px 0;">Classical & Root Lexicons</h4>
-      <div id="classicalLinks"></div>
+      <p class="group-hint">Classical dictionaries and root-level references.</p>
+      <div id="classicalLinks" class="link-group"></div>
       
       <h4 style="margin:10px 0 5px 0;">Modern & Bilingual Dictionaries</h4>
-      <div id="bilingualLinks"></div>
+      <p class="group-hint">Modern meanings and cross-language reference tools.</p>
+      <div id="bilingualLinks" class="link-group"></div>
 
       <h4 style="margin:10px 0 5px 0;">Corpus & Textual Analysis</h4>
-      <div id="corpusLinks"></div>
+      <p class="group-hint">Find Qur'anic occurrences, roots, and word-level analysis.</p>
+      <div id="corpusLinks" class="link-group"></div>
     </div>
   </div>
+
 </div>
+
+
+<dialog id="sec1-dialog" class="mobile-dialog">
+  <div class="dialog-content">
+    <h3>About Comparative Root Analyzer</h3>
+    <p>Curious what a Qur'anic Arabic root may reveal? Enter a root and the tool turns it into its closest Hebrew cognate, then checks live Hebrew dictionaries for older or wider shades of meaning. Arabic and Hebrew are sister languages, so Hebrew can sometimes preserve a sense that is less visible in Arabic dictionaries today.</p>
+    
+    <ul class="dialog-list">
+      <li><strong>Start with Hebrew:</strong> See the proposed Hebrew cognate and its definitions from Sefaria and Wiktionary.</li>
+      <li><strong>See the wider picture:</strong> Compare the root with reconstructed Nabataean, Syriac, Sabaic (Musnad), and Ge'ez forms, letter by letter.</li>
+      <li><strong>Keep your notes:</strong> Copy a clean Markdown research summary in one click.</li>
+    </ul>
+
+    <div class="dialog-note">
+      Please note: Comparative script forms are generated algorithmically using historical sound-change rules rather than pre-compiled word lists. If a live lookup returns empty, that reconstructed form may simply not exist in surviving texts—try searching a related root instead.
+    </div>
+
+    <button class="close-btn" onclick="document.getElementById('sec1-dialog').close()">Got it</button>
+  </div>
+</dialog>
+
+
+<dialog id="sec2-dialog" class="mobile-dialog">
+  <div class="dialog-content">
+    <h3>About External Arabic Lexicons Portal</h3>
+    <p>Launch direct queries across external classical dictionaries, modern bilingual lexicons, and Qur'anic textual tools using a single word or root.</p>
+    
+    <ul class="dialog-list">
+      <li><strong>Classical Lexicons:</strong> Ejtaal (Lane's Lexicon / Hans Wehr) and Hawramani.</li>
+      <li><strong>Bilingual Dictionaries:</strong> Al-Ma'any (Arabic, English, Urdu), Arabdict, and Reverso.</li>
+      <li><strong>Corpus Tools:</strong> Root concordances and verse occurrences on Quran.com and Quranic Corpus.</li>
+    </ul>
+
+    <button class="close-btn" onclick="document.getElementById('sec2-dialog').close()">Got it</button>
+  </div>
+</dialog>
+
+<dialog id="method-dialog" class="mobile-dialog">
+  <div class="dialog-content">
+    <h3>Method &amp; limits</h3>
+    <p>This tool applies regular historical sound correspondences to propose related forms across Semitic languages. Its central comparison is Arabic to Hebrew; the other scripts provide supporting context.</p>
+    <ul class="dialog-list">
+      <li><strong>Reconstructed forms:</strong> A generated form is a research lead, not a claim that the word is attested in every language.</li>
+      <li><strong>Dictionary evidence:</strong> A live result provides a source to examine; a missing result may reflect spelling, survival, or source coverage.</li>
+      <li><strong>Best use:</strong> Compare the linguistic evidence with established lexicons and scholarship before drawing conclusions.</li>
+    </ul>
+    <button class="close-btn" onclick="document.getElementById('method-dialog').close()">Got it</button>
+  </div>
+</dialog>
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <p class="footer-why">
-      This tool helps you understand Qur'anic Arabic words by looking at their Hebrew cognates. Arabic
-      and Hebrew both descend from the same Semitic root system, and Hebrew often kept older or wider
-      senses of a root alive that classical Arabic dictionaries no longer show. Type in a root, and this
-      tool finds its Hebrew form and looks it up in real dictionaries for you.
-    </p>
+    <div class="footer-grid">
+      <section>
+        <h2 class="footer-heading">About</h2>
+        <p class="footer-copy">Explore Qur'anic Arabic along two paths: derive a Hebrew cognate and check live Hebrew lexicons, or open the same root in Arabic dictionaries and Qur'anic corpus tools.</p>
+      </section>
+      <section>
+        <h2 class="footer-heading">Research flow</h2>
+        <p class="footer-copy"><strong>Analyze:</strong> map an Arabic root across related Semitic scripts.</p>
+        <p class="footer-copy" style="margin-top:6px;"><strong>Examine:</strong> inspect the letter correspondences and Hebrew dictionary evidence.</p>
+        <p class="footer-copy" style="margin-top:6px;"><strong>Cross-check:</strong> open Arabic lexicons and Qur'anic corpus tools.</p>
+      </section>
+      <section>
+        <h2 class="footer-heading">Research note</h2>
+        <p class="footer-copy">Script forms are generated from historical sound-change rules. Dictionary results are evidence to explore, not automatic proof of a cognate.</p>
+        <p class="footer-copy" style="margin-top:7px;"><button class="research-action" type="button" onclick="document.getElementById('method-dialog').showModal()">Method &amp; limits</button> <a class="footer-text-link" href="https://github.com/BARQx/quran-cognate-lexicon/issues/new" target="_blank" rel="noopener">Suggest a correction</a></p>
+      </section>
+    </div>
     <p class="footer-author">
-      Built by Nashit Ahmed Barq &middot;
-	  v1.0 &middot;
-      <a href="https://barqx.github.io/" target="_blank" rel="noopener">barqx.github.io</a> &middot;
-      <a href="https://pk.linkedin.com/in/barqx" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="footer-credit">Built by Nashit Ahmed Barq</span>
+      <span class="footer-credit">v1.0</span>
+      <a class="footer-credit" href="https://barqx.github.io/" target="_blank" rel="noopener">barqx.github.io</a>
+      <a class="footer-credit" href="https://pk.linkedin.com/in/barqx" target="_blank" rel="noopener">LinkedIn</a>
     </p>
   </div>
 </footer>
 
 <script>
+
 
   // SEMITIC MATRIX — Verified historical correspondences
 const SEMITIC_MATRIX = {
@@ -564,6 +1041,8 @@ const SEMITIC_MATRIX = {
     'إ': { he: 'א', syr: 'ܐ', nab: '𐢁', msn: '𐩱', gz: 'አ', bw: '<', note: 'Glottal stop with i' },
     'آ': { he: 'א', syr: 'ܐ', nab: '𐢁', msn: '𐩱', gz: 'አ', bw: '|', note: 'Glottal stop with ā' },
     'ء': { he: 'א', syr: 'ܐ', nab: '𐢁', msn: '𐩱', gz: 'አ', bw: '\'', note: 'Glottal stop (hamza)' },
+    'ؤ': { he: 'א', syr: 'ܐ', nab: '𐢁', msn: '𐩱', gz: 'አ', bw: '&', note: 'Hamza seated on wāw (ؤ) — still a glottal stop' },
+    'ئ': { he: 'א', syr: 'ܐ', nab: '𐢁', msn: '𐩱', gz: 'አ', bw: '}', note: 'Hamza seated on yā\' (ئ) — still a glottal stop' },
     'ب': { he: 'ב', syr: 'ܒ', nab: '𐢃', msn: '𐩨', gz: 'በ', bw: 'b', note: 'Voiced bilabial plosive (b) — lips together, vocal cords vibrate' },
     'ت': { he: 'ת', syr: 'ܬ', nab: '𐢞', msn: '𐩩', gz: 'ተ', bw: 't', note: 'Voiceless dental plosive (t) — tongue against teeth, no vocal cord vibration' },
     'ث': { he: 'ת', syr: 'ܬ', nab: '𐢞', msn: '𐩻', gz: 'ተ', bw: 'v', note: 'Voiceless interdental fricative (th) — merged with t in Ge\'ez' },
@@ -613,6 +1092,7 @@ const SEMITIC_MATRIX = {
     'س': 'ס', // Arabic س covers two Proto-Semitic sibilants; Hebrew kept them separate (ש vs ס)
     'ظ': 'ט', // Primary ẓ > צ, but some entries reflect the later/Aramaic-influenced ט form
     'ذ': 'ד'  // Primary ḏ > ז, but Aramaic-influenced words show ד instead
+
   };
 
   // Builds every historically-plausible Hebrew root spelling for a given Arabic
@@ -654,6 +1134,75 @@ const SEMITIC_MATRIX = {
   }
 
   let lastAnalysis = null;
+  const RECENT_ROOTS_KEY = 'qcl-recent-roots';
+
+  function readRootList(key) {
+    try {
+      const roots = JSON.parse(localStorage.getItem(key));
+      return Array.isArray(roots) ? roots.filter(root => typeof root === 'string') : [];
+    } catch (e) { return []; }
+  }
+
+  function writeRootList(key, roots) {
+    try { localStorage.setItem(key, JSON.stringify(roots)); } catch (e) { /* storage unavailable */ }
+  }
+
+  function renderRootChips(containerId, roots, emptyText) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+    if (!roots.length) {
+      const text = document.createElement('span');
+      text.className = 'try-label';
+      text.textContent = emptyText;
+      container.appendChild(text);
+      return;
+    }
+    roots.forEach(root => {
+      const button = document.createElement('button');
+      button.className = 'shelf-root';
+      button.type = 'button';
+      button.dir = 'rtl';
+      button.textContent = root;
+      button.addEventListener('click', () => trySampleRoot(root));
+      container.appendChild(button);
+    });
+  }
+
+  function renderResearchShelf() {
+    const recent = readRootList(RECENT_ROOTS_KEY);
+    const shelf = document.getElementById('researchShelf');
+    if (!shelf) return;
+    shelf.hidden = !recent.length;
+    renderRootChips('recentRoots', recent, 'No recent roots yet.');
+  }
+
+  function recordRecentRoot(root) {
+    const roots = readRootList(RECENT_ROOTS_KEY).filter(item => item !== root);
+    roots.unshift(root);
+    writeRootList(RECENT_ROOTS_KEY, roots.slice(0, 8));
+    renderResearchShelf();
+  }
+
+  function copyAnalysisLink() {
+    if (!lastAnalysis) return;
+    const url = new URL(window.location.href);
+    url.searchParams.set('root', lastAnalysis.root);
+    navigator.clipboard.writeText(url.toString()).then(() => alert('Analysis link copied to clipboard.'));
+  }
+
+  function exportResearchHistory() {
+    const roots = readRootList(RECENT_ROOTS_KEY);
+    if (!roots.length) { alert('Your research history is empty.'); return; }
+    const markdown = `# Recent Qur’anic Arabic Root Research\n\n${roots.map(root => `- ${root}`).join('\n')}\n`;
+    navigator.clipboard.writeText(markdown).then(() => alert('Research history copied as Markdown.'));
+  }
+
+  function clearResearchHistory() {
+    if (!confirm('Clear your local research history?')) return;
+    writeRootList(RECENT_ROOTS_KEY, []);
+    renderResearchShelf();
+  }
 
   function normalizeInput(text) {
     if (!text) return '';
@@ -663,7 +1212,11 @@ const SEMITIC_MATRIX = {
       .replace(/[\u06A9\u06AA]/g, 'ك')
       .replace(/[\u06C1\u06BE\u06D5]/g, 'ه')
       .replace(/[\u06C3]/g, 'ة')
-      .replace(/[أإآء]/g, 'ا')
+      // NOTE: أ/إ/آ/ء/ؤ/ئ are intentionally left distinct here (not collapsed to
+      // ا). SEMITIC_MATRIX already maps every hamza form to the same Hebrew/
+      // Syriac/Nabataean/Musnad/Ge'ez cognate, but each needs its own distinct
+      // Buckwalter code (>, <, |, ', &, }) for a working Ejtaal lookup — collapsing
+      // them here before the matrix lookup silently threw that away.
       .replace(/[\u0660-\u0669\u06F0-\u06F9]/g, '');
   }
 
@@ -806,6 +1359,27 @@ const SEMITIC_MATRIX = {
     }
   }
 
+  function trySampleRoot(root) {
+    const input = document.getElementById('arabicInput');
+    input.value = root;
+    document.querySelector('.card-folio').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    convertAndFetch();
+  }
+
+  function tryLexiconSample(root) {
+    const input = document.getElementById('lexiconInput');
+    input.value = root;
+    generateLexiconLinks();
+  }
+
+  function openArabicLookupForCurrentRoot() {
+    if (!lastAnalysis) return;
+    const input = document.getElementById('lexiconInput');
+    input.value = lastAnalysis.root;
+    generateLexiconLinks();
+    document.querySelector('.card-ledger').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   async function convertAndFetch() {
     const rawInput = document.getElementById('arabicInput').value.trim();
     const resultBox = document.getElementById('resultBox');
@@ -820,6 +1394,7 @@ const SEMITIC_MATRIX = {
     const breakdownBody = document.getElementById('breakdownBody');
     const errorDisplay = document.getElementById('error');
     const resultsContainer = document.getElementById('resultsContainer');
+    const analysisContext = document.getElementById('analysisContext');
 
     errorDisplay.innerText = '';
     alternativesDisplay.innerHTML = '';
@@ -830,9 +1405,16 @@ const SEMITIC_MATRIX = {
     }
 
     const cleanInput = normalizeInput(rawInput);
+    recordRecentRoot(cleanInput);
     const morphTags = detectRootMorphology(cleanInput);
     const { primaryHebrew, syriac, nabataean, musnad, geez, breakdown } = convertArabicCognates(cleanInput);
     const activeHebrew = primaryHebrew;
+
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('root', rawInput);
+      window.history.replaceState(null, '', url);
+    } catch (e) { /* URL API unavailable — deep-linking degrades silently */ }
 
     rootTagBar.innerHTML = morphTags.map(t => `<span class="root-type-badge">${t}</span>`).join('');
     arabicDisplay.innerText = formatSurrogateAwareString(cleanInput);
@@ -841,8 +1423,17 @@ const SEMITIC_MATRIX = {
     syriacDisplay.innerText = formatSurrogateAwareString(syriac);
     musnadDisplay.innerText = formatSurrogateAwareString(musnad);
     geezDisplay.innerText = formatSurrogateAwareString(geez);
+    analysisContext.hidden = false;
+    analysisContext.innerHTML = '<strong>Proposed Hebrew cognate:</strong> generated from regular sound correspondences; live dictionary evidence is loading.';
     
     resultBox.style.display = 'block';
+
+    // Motion signature: replay the "ink settling" animation on each new analysis.
+    const scriptBoxes = document.querySelectorAll('.script-box');
+    scriptBoxes.forEach(el => el.classList.remove('ink-settle'));
+    void document.body.offsetWidth; // force reflow so the animation restarts even on repeat searches
+
+    scriptBoxes.forEach(el => el.classList.add('ink-settle'));
 
     breakdownBody.innerHTML = breakdown.map((item, index) => {
       let displayHe = item.he;
@@ -851,11 +1442,11 @@ const SEMITIC_MATRIX = {
       }
       return `<tr>
         <td><strong>${item.ar}</strong></td>
-        <td class="nabataean-cell">${item.nab}</td>
-        <td>${displayHe}</td>
-        <td>${item.syr}</td>
-        <td class="musnad-cell">${item.msn}</td>
-        <td>${item.gz}</td>
+        <td class="nabataean-cell nabataean-font">${item.nab}</td>
+        <td class="hebrew-cell">${displayHe}</td>
+        <td class="syriac-cell">${item.syr}</td>
+        <td class="musnad-cell musnad-font">${item.msn}</td>
+        <td class="geez-cell">${item.gz}</td>
         <td class="law-note">${item.note}</td>
       </tr>`;
     }).join('');
@@ -901,13 +1492,14 @@ const SEMITIC_MATRIX = {
       musnad,
       geez,
       sefaria: sefariaDicts,
+      wiktionary: wikiRes,
       tags: morphTags
     };
 
     resultsContainer.innerHTML = '';
 
     if (usedAlternate) {
-      resultsContainer.innerHTML += `<div style="text-align: center; color: var(--muted); padding: 6px 0 14px 0; font-size: 0.85rem;">No entries found for "${activeHebrew}" — showing results for the attested alternate spelling "<strong>${matchedHebrew}</strong>" instead.</div>`;
+      resultsContainer.innerHTML += `<div class="alert-info">No entries found for "${activeHebrew}" — showing results for the attested alternate spelling "<strong>${matchedHebrew}</strong>" instead.</div>`;
     }
 
     let hasResults = false;
@@ -929,11 +1521,12 @@ const SEMITIC_MATRIX = {
 
     if (wikiRes) {
       hasResults = true;
+      const wiktionaryUrl = `https://en.wiktionary.org/wiki/${encodeURIComponent(matchedHebrew)}`;
       resultsContainer.innerHTML += `
         <div class="dict-card">
           <div class="dict-header">
             <span>Wiktionary</span>
-            <span class="dict-source-tag">Modern Hebrew</span>
+            <span><span class="dict-source-tag">Modern Hebrew</span> <a class="dict-source-link" href="${wiktionaryUrl}" target="_blank" rel="noopener">View source ↗</a></span>
           </div>
           <div class="dict-content">${wikiRes}</div>
         </div>
@@ -944,45 +1537,126 @@ const SEMITIC_MATRIX = {
       const triedNote = generateHebrewRootCandidates(cleanInput).length > 1
         ? ' Alternate spellings were also checked with no match.'
         : '';
-      resultsContainer.innerHTML += `<div style="text-align: center; color: #64748b; padding: 14px;">No direct Hebrew/Aramaic entries found for "${activeHebrew}".${triedNote} Use the Arabic lexicons portal in Section 2.</div>`;
+      resultsContainer.innerHTML += `<div class="alert-info">No direct Hebrew/Aramaic entries found for "${activeHebrew}".${triedNote} This does not rule out a relationship: spelling, lexical survival, and source coverage can all affect results.<br><button class="research-action" type="button" style="margin-top:8px;" onclick="openArabicLookupForCurrentRoot()">Continue in Arabic lexicons</button></div>`;
+    }
+    if (usedAlternate || !hasResults) {
+      analysisContext.hidden = true;
+    } else {
+      analysisContext.innerHTML = `<strong>Proposed Hebrew cognate with live evidence:</strong> ${activeHebrew}. Review the dictionary entries below and the correspondence table before drawing conclusions.`;
     }
   }
 
-  function copyResearchBrief() {
+ function copyResearchBrief() {
+  if (!lastAnalysis) {
+    alert("Please perform an analysis first!");
+    return;
+  }
+
+  // Helper to strip HTML, normalize spaces, and collapse whitespace cleanly
+  const cleanText = (str) => {
+    if (!str) return '';
+    return str
+      .replace(/<[^>]*>/g, '')                 // Remove HTML tags
+      .replace(/\u00A0/g, ' ')                 // Replace non-breaking spaces
+      .replace(/[ \t]+/g, ' ')                 // Collapse multiple spaces/tabs
+      .replace(/\n\s*\n/g, '\n')               // Remove empty blank lines 
+      .trim();
+  };
+
+  let markdown = `### Semitic Comparative Brief: Root [ ${lastAnalysis.root} ]\n\n`;
+  markdown += `**Cognate Breakdown**\n`;
+  markdown += `* **Arabic Root:** ${lastAnalysis.root}\n`;
+  markdown += `* **Nabataean:** ${lastAnalysis.nabataean}\n`;
+  markdown += `* **Hebrew:** ${lastAnalysis.hebrew}\n`;
+  markdown += `* **Syriac:** ${lastAnalysis.syriac}\n`;
+  markdown += `* **Musnad (Sabaic):** ${lastAnalysis.musnad}\n`;
+  markdown += `* **Ge'ez:** ${lastAnalysis.geez}\n`;
+  if (lastAnalysis.tags.length > 0) {
+    markdown += `* **Morphology:** ${lastAnalysis.tags.join(', ')}\n`;
+  }
+  markdown += `\n`;
+
+  const hasSefaria = Object.keys(lastAnalysis.sefaria).length > 0;
+  const hasWiki = !!lastAnalysis.wiktionary;
+
+  if (hasSefaria || hasWiki) {
+    markdown += `--- \n\n### Lexicon Definitions\n\n`;
+
+    // 1. Process Sefaria Entries with strict "Sense X: Headword" matching UI
+    if (hasSefaria) {
+      markdown += `#### Sefaria Classical Lexicons\n`;
+      for (const [dict, entries] of Object.entries(lastAnalysis.sefaria)) {
+        markdown += `**${dict}**\n`;
+        entries.forEach((group, index) => {
+          const hw = cleanText(group.headword);
+          const senseTitle = hw ? `Sense ${index + 1}: ${hw}` : `Sense ${index + 1}`;
+          
+          markdown += `* **${senseTitle}**\n`;
+
+          group.defs.forEach(d => {
+            const sanitized = cleanText(d);
+            if (sanitized) {
+              markdown += `  * ${sanitized}\n`;
+            }
+          });
+        });
+        markdown += `\n`;
+      }
+    }
+
+    // 2. Process Wiktionary Entries with strict Sense retention
+    if (hasWiki) {
+      markdown += `#### Wiktionary (Modern Hebrew)\n`;
+      
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = lastAnalysis.wiktionary;
+      
+      const groups = tempDiv.querySelectorAll('.homonym-group');
+      if (groups.length > 0) {
+        groups.forEach(g => {
+          const title = cleanText(g.querySelector('.homonym-title')?.textContent || '');
+          if (title) {
+            markdown += `**${title}**\n`;
+          }
+          g.querySelectorAll('li').forEach(li => {
+            const itemText = cleanText(li.textContent);
+            if (itemText) {
+              markdown += `* ${itemText}\n`;
+            }
+          });
+          markdown += `\n`;
+        });
+      } else {
+        const sanitizedWiki = cleanText(lastAnalysis.wiktionary);
+        markdown += `${sanitizedWiki}\n`;
+      }
+    }
+  }
+
+  navigator.clipboard.writeText(markdown).then(() => {
+    alert("Research brief copied to clipboard in clean Markdown format!");
+  });
+}
+
+  function openCalLexicon() {
     if (!lastAnalysis) {
       alert("Please perform an analysis first!");
       return;
     }
-    
-    let markdown = `### Semitic Comparative Brief: Root [ ${lastAnalysis.root} ]\n\n`;
-    markdown += `* **Arabic Root:** ${lastAnalysis.root}\n`;
-    markdown += `* **Nabataean Cognate:** ${lastAnalysis.nabataean}\n`;
-    markdown += `* **Hebrew Cognate:** ${lastAnalysis.hebrew}\n`;
-    markdown += `* **Syriac Cognate:** ${lastAnalysis.syriac}\n`;
-    markdown += `* **Musnad (Old South Arabian):** ${lastAnalysis.musnad}\n`;
-    markdown += `* **Ge'ez Cognate:** ${lastAnalysis.geez}\n`;
-    if (lastAnalysis.tags.length > 0) markdown += `* **Morphology:** ${lastAnalysis.tags.join(', ')}\n`;
-    markdown += `\n`;
-
-    if (Object.keys(lastAnalysis.sefaria).length > 0) {
-      markdown += `#### Lexicon Definitions\n`;
-      for (const [dict, entries] of Object.entries(lastAnalysis.sefaria)) {
-        markdown += `**${dict}**:\n`;
-        entries.forEach(e => {
-          e.defs.forEach(d => {
-            markdown += `* ${d.replace(/<\/?[^>]+(>|$)/g, "").trim()}\n`;
-          });
-        });
-      }
-    }
-
-    navigator.clipboard.writeText(markdown).then(() => {
-      alert("Research brief copied to clipboard in Markdown format!");
-    });
+    // matchedHebrew defaults to the primary derived cognate, and is only
+    // swapped for an attested alternate spelling when that's what actually
+    // returned dictionary results — so it's always the "best" root to use.
+    const root = lastAnalysis.matchedHebrew || lastAnalysis.hebrew;
+    const url = `https://cal.huc.edu/browseSKEYheaders.php?tools=on&first3=${encodeURIComponent(root)}`;
+    window.open(url, '_blank');
   }
 
-  function toggleModeNotice() {
-    generateLexiconLinks();
+  function linkTile(url, title, desc, categoryClass = '') {
+    return `
+      <a class="link-tile ${categoryClass}" href="${url}" target="_blank">
+        <div>${title}<span class="desc">${desc}</span></div> &rarr;
+      </a>
+    `;
   }
 
   function generateLexiconLinks() {
@@ -991,7 +1665,6 @@ const SEMITIC_MATRIX = {
     const classicalContainer = document.getElementById('classicalLinks');
     const bilingualContainer = document.getElementById('bilingualLinks');
     const corpusContainer = document.getElementById('corpusLinks');
-    const searchType = document.querySelector('input[name="searchType"]:checked').value;
 
     if (!rawInput) {
       resultBox.style.display = 'none';
@@ -1001,71 +1674,70 @@ const SEMITIC_MATRIX = {
     const cleanInput = normalizeInput(rawInput);
     const bwInput = getBuckwalter(cleanInput);
     const encInput = encodeURIComponent(cleanInput);
+    // NOTE: bwInput is intentionally NOT URI-encoded below. Ejtaal's #bwq= hash
+    // expects the literal, unescaped Buckwalter ASCII string (see their own API
+    // docs: #bwq=xf, #bwq=khf). encodeURIComponent would turn '$' (ش) into '%24',
+    // '<' (hamza forms) into '%3C', '&' into '%26', etc., silently breaking the
+    // lookup for any root containing those letters.
+    //
+    // Ejtaal's live site also does NOT implement the strict-Buckwalter hamza
+    // codes (>, <, |, ', &, }) despite their docs claiming full compliance —
+    // their own published letter table (github.com/ejtaal/mr) only ever
+    // mapped plain a/A to alif, with no hamza variants at all. Verified by
+    // testing: sending those codes gets mangled by their basic substitution
+    // table (and/or the browser's own auto-encoding of < and > in URLs).
+    // So for the Ejtaal link specifically, flatten every hamza form to 'A',
+    // matching what their real implementation actually accepts.
+    const ejtaalBw = bwInput.replace(/[><|'&}]/g, 'A');
+
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('lex', rawInput);
+      window.history.replaceState(null, '', url);
+    } catch (e) { /* URL API unavailable — deep-linking degrades silently */ }
 
     resultBox.style.display = 'block';
 
-    let classicalHTML = '';
-    if (searchType === 'root') {
-      classicalHTML += `
-        <a class="link-tile" href="https://ejtaal.net/aa#bwq=${encodeURIComponent(bwInput)}" target="_blank">
-          <div>Ejtaal Root Jump<span class="desc">Lane's / Hans Wehr (#bwq=${bwInput})</span></div> &rarr;
-        </a>
-      `;
-    } else {
-      classicalHTML += `
-        <a class="link-tile" href="https://ejtaal.net/aa#bwq=${encodeURIComponent(bwInput)}" target="_blank">
-          <div>Ejtaal Exact Word Jump<span class="desc">Jump to word location (#bwq=${bwInput})</span></div> &rarr;
-        </a>
-      `;
-    }
+    classicalContainer.innerHTML =
+      linkTile(
+        `https://ejtaal.net/aa#bwq=${ejtaalBw}`,
+        'Ejtaal',
+        `Lane's / Hans Wehr (#bwq=${ejtaalBw})`,
+        'tile-classical'
+      ) +
+      linkTile(
+        `https://arabiclexicon.hawramani.com/search/${encInput}`,
+        'Hawramani Arabic Lexicon',
+        'Classical dictionaries search',
+        'tile-classical'
+      );
 
-    let bilingualHTML = `
-      <a class="link-tile" href="https://www.almaany.com/ar/dict/ar-ar/${encInput}/" target="_blank">
-        <div>Al-Ma'any (ar-ar)<span class="desc">Arabic-Arabic Dictionary</span></div> &rarr;
-      </a>
-      <a class="link-tile" href="https://www.almaany.com/ar/dict/ar-en/${encInput}/" target="_blank">
-        <div>Al-Ma'any (ar-en)<span class="desc">Arabic-English Lexicon</span></div> &rarr;
-      </a>
-      <a class="link-tile" href="https://www.almaany.com/ar/dict/ar-ur/${encInput}/" target="_blank">
-        <div>Al-Ma'any (ar-ur)<span class="desc">Arabic-Urdu Dictionary</span></div> &rarr;
-      </a>
-      <a class="link-tile" href="https://www.arabdict.com/en/english-arabic/${encInput}" target="_blank">
-        <div>Arabdict (ar-en)<span class="desc">Comprehensive Modern Lexicon</span></div> &rarr;
-      </a>
-      <a class="link-tile" href="https://dictionary.reverso.net/arabic-english/${encInput}" target="_blank">
-        <div>Reverso Dictionary<span class="desc">Arabic-English Definitions</span></div> &rarr;
-      </a>
-      <a class="link-tile" href="https://context.reverso.net/translation/arabic-english/${encInput}" target="_blank">
-        <div>Reverso Translation<span class="desc">Contextual Sentence Examples</span></div> &rarr;
-      </a>
-    `;
+    bilingualContainer.innerHTML =
+      linkTile(`https://www.almaany.com/ar/dict/ar-ar/${encInput}/`, "Al-Ma'any (ar-ar)", 'Arabic-Arabic Dictionary', 'tile-bilingual') +
+      linkTile(`https://www.almaany.com/ar/dict/ar-en/${encInput}/`, "Al-Ma'any (ar-en)", 'Arabic-English Lexicon', 'tile-bilingual') +
+      linkTile(`https://www.almaany.com/ar/dict/ar-ur/${encInput}/`, "Al-Ma'any (ar-ur)", 'Arabic-Urdu Dictionary', 'tile-bilingual') +
+      linkTile(`https://www.arabdict.com/en/english-arabic/${encInput}`, 'Arabdict (ar-en)', 'Comprehensive Modern Lexicon', 'tile-bilingual') +
+      linkTile(`https://dictionary.reverso.net/arabic-english/${encInput}`, 'Reverso Dictionary', 'Arabic-English Definitions', 'tile-bilingual') +
+      linkTile(`https://context.reverso.net/translation/arabic-english/${encInput}`, 'Reverso Translation', 'Contextual Sentence Examples', 'tile-bilingual');
 
-    let corpusHTML = '';
-    if (searchType === 'root') {
-      corpusHTML += `
-        <a class="link-tile" href="https://corpus.quran.com/search.jsp?q=root%3A${encInput}" target="_blank">
-          <div>Quranic Corpus (Root)<span class="desc">Root concordance & verse list</span></div> &rarr;
-        </a>
-        <a class="link-tile" href="https://quran.com/search?q=${encInput}" target="_blank">
-          <div>Quran.com Search<span class="desc">Verse occurrences</span></div> &rarr;
-        </a>
-      `;
-    } else {
-      corpusHTML += `
-        <a class="link-tile" href="https://corpus.quran.com/search.jsp?q=${encInput}" target="_blank">
-          <div>Quranic Corpus (Word)<span class="desc">Exact token concordance</span></div> &rarr;
-        </a>
-        <a class="link-tile" href="https://quranmorphology.com/textsearch/ar/${encInput}" target="_blank">
-          <div>Quran Morphology<span class="desc">Segmented word-level analysis</span></div> &rarr;
-        </a>
-      `;
-    }
-
-    classicalContainer.innerHTML = classicalHTML;
-    bilingualContainer.innerHTML = bilingualHTML;
-    corpusContainer.innerHTML = corpusHTML;
+    corpusContainer.innerHTML =
+      linkTile(`https://corpus.quran.com/search.jsp?q=root%3A${encInput}`, 'Quranic Corpus (Root)', 'Root concordance & verse list', 'tile-corpus') +
+      linkTile(`https://quranmorphology.com/root/${encInput}`, 'Quran Morphology (Root)', 'Quick root search', 'tile-corpus') +
+      linkTile(`https://quran.com/search?q=${encInput}`, 'Quran.com Search', 'Verse occurrences', 'tile-corpus') +
+      linkTile(`https://corpus.quran.com/search.jsp?q=${encInput}`, 'Quranic Corpus (Word)', 'Exact token concordance', 'tile-corpus') +
+      linkTile(`https://quranmorphology.com/textsearch/ar/${encInput}`, 'Quran Morphology (Word)', 'Segmented word-level analysis', 'tile-corpus');
   }
+
+  function copyArabicSourceLinks() {
+    const links = [...document.querySelectorAll('#classicalLinks a, #bilingualLinks a, #corpusLinks a')]
+      .map(link => `${link.textContent.trim().replace(/\s+/g, ' ')}\n${link.href}`);
+    if (!links.length) return;
+    navigator.clipboard.writeText(links.join('\n\n')).then(() => alert('Arabic source links copied to clipboard.'));
+  }
+
+  renderResearchShelf();
 </script>
+
 
 <!-- ==================== Theme toggle & decorative frieze ==================== -->
 <script>
@@ -1092,25 +1764,31 @@ const SEMITIC_MATRIX = {
     };
   })();
 
+  // Deep-link support: if a ?root=<word> and/or ?lex=<word> param is present, prefill and run automatically.
   (function () {
-    const glyphSets = [
-      { label: 'ARB', text: 'كتب' },
-      { label: 'NAB', text: '𐢏𐢞𐢁' },
-      { label: 'HEB', text: 'כתב' },
-      { label: 'SYR', text: 'ܟܬܒ' },
-      { label: 'MSN', text: '𐩫𐩩𐩨' },
-      { label: 'GEZ', text: 'ጸሐፈ' }
-    ];
-    const classFor = { HEB: 'hebrew-font', SYR: 'syriac-font', NAB: 'nabataean-font', MSN: 'musnad-font' };
-    const track = document.getElementById('glyphFriezeTrack');
-    if (!track) return;
+    try {
+      const params = new URLSearchParams(window.location.search);
 
-    const cell = (g) => `<span class="${classFor[g.label] || ''}">${g.label} ${g.text}</span>`;
-    const row = glyphSets.map(cell).join('');
-    track.innerHTML = row + row;
+      const sharedRoot = params.get('root');
+      if (sharedRoot) {
+        const input = document.getElementById('arabicInput');
+        if (input) {
+          input.value = sharedRoot;
+          if (typeof convertAndFetch === 'function') convertAndFetch();
+        }
+      }
+
+      const sharedLex = params.get('lex');
+      if (sharedLex) {
+        const lexInput = document.getElementById('lexiconInput');
+        if (lexInput) {
+          lexInput.value = sharedLex;
+          if (typeof generateLexiconLinks === 'function') generateLexiconLinks();
+        }
+      }
+    } catch (e) { /* URLSearchParams unavailable — ignore, page still works manually */ }
   })();
 </script>
 
 </body>
-
 </html>
