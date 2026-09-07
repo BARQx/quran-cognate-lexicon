@@ -1,0 +1,472 @@
+/* ============================================================
+   Modal Dialogs & Educational Panels Styles
+   ============================================================ */
+
+/* Modal Scroll Lock (zero layout-shift via CSS scrollbar compensation) */
+:root {
+  --scrollbar-compensation: 0px;
+}
+
+html.modal-open,
+html:has(dialog[open]) {
+  overflow: hidden !important;
+  scrollbar-gutter: auto !important;
+  padding-right: var(--scrollbar-compensation, 0px) !important;
+}
+
+body.modal-open,
+body:has(dialog[open]) {
+  overflow: hidden !important;
+}
+
+/* Base Modal Dialogs */
+.mobile-dialog {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card-bg);
+  color: var(--text);
+  padding: 24px;
+  max-width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--card-bg);
+  width: 90%;
+  margin: auto;
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.mobile-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+}
+
+.dialog-content h3 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+.dialog-content p {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.dialog-list {
+  margin: 0 0 16px 18px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.dialog-list li {
+  margin-bottom: 6px;
+}
+
+.dialog-note {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--muted);
+  background: var(--box-bg);
+  padding: 10px 12px;
+  border-radius: 6px;
+  border-left: 3px solid var(--accent);
+  margin-bottom: 18px;
+}
+
+.dialog-highlight-item {
+  background: var(--box-bg);
+  border-left: 3px solid var(--accent2);
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-left: -10px;
+}
+
+.close-btn {
+  width: 100%;
+  padding: 11px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* Script Info Modal Styles */
+.script-dialog-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.script-dialog-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.script-dialog-head h3 {
+  margin: 0;
+  font-size: 1.22rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.script-dialog-tag {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.script-dialog-subtitle {
+  font-size: 0.84rem;
+  color: var(--muted);
+  font-weight: 500;
+  margin: 0;
+}
+
+.script-dialog-direction {
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  line-height: 1.35;
+}
+
+.script-dialog-direction-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 7px;
+  border-radius: 4px;
+  background: var(--box-bg);
+  border: 1px solid var(--border);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.script-dialog-direction-text {
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.script-dialog-banner {
+  background: var(--box-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+}
+
+.script-dialog-banner-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.script-dialog-banner-label {
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.script-dialog-banner-sub {
+  font-size: 0.8rem;
+  color: var(--text);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.script-dialog-banner-root {
+  font-size: 1.28rem;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-align: end;
+  letter-spacing: 0.04em;
+}
+
+.script-dialog-section {
+  margin-bottom: 14px;
+}
+
+.script-dialog-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.script-dialog-section-p {
+  font-size: 0.87rem;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0 0 4px 0;
+}
+
+.script-dialog-callout {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  margin: 14px 0 16px 0;
+}
+
+.script-dialog-callout-text {
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+}
+
+.script-dialog-influence {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 11px 14px;
+  margin: 14px 0 16px 0;
+}
+
+.script-dialog-influence-text {
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+}
+
+.script-dialog-examples {
+  background: var(--box-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.script-dialog-example-item {
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 10px;
+}
+
+.script-dialog-example-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.script-dialog-example-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.script-dialog-example-title {
+  font-weight: 700;
+  font-size: 0.87rem;
+  color: var(--primary);
+}
+
+.script-dialog-example-badge {
+  font-size: 0.67rem;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 4px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.script-dialog-example-desc {
+  font-size: 0.82rem;
+  line-height: 1.52;
+  color: var(--text);
+  margin: 0;
+}
+
+/* Lexicon Educational Dialog Styles */
+.lex-dialog-head {
+  margin-bottom: 14px;
+}
+
+.lex-dialog-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.lex-dialog-topline h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--primary);
+  font-family: var(--font-display);
+}
+
+.lex-dialog-category-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--tag-bg);
+  color: var(--muted);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.lex-dialog-arabic-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: var(--card-bg-folio);
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.lex-dialog-arabic-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.lex-dialog-arabic-badge {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.lex-dialog-body {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.lex-dialog-body p {
+  margin-bottom: 12px;
+}
+
+.lex-dialog-example-card {
+  background: var(--card-bg-ledger);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 12px 0;
+  font-size: 0.88rem;
+}
+
+.lex-dialog-example-title {
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.lex-dialog-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.lex-dialog-link-btn:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}
+
+/* Responsive Overrides: Dialogs */
+@media (max-width: 640px) {
+  .script-dialog-banner {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  .script-dialog-banner-root {
+    font-size: 1.12rem;
+  }
+  .script-dialog-banner-sub {
+    font-size: 0.74rem;
+  }
+
+  .mobile-dialog {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+}

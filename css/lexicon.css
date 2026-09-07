@@ -1,0 +1,440 @@
+/* ============================================================
+   Lexicon Results, Verbal Stems & Skeleton Loading Styles
+   ============================================================ */
+
+/* Dictionary Cards */
+.dict-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.dict-header {
+  background: var(--bg-color-alt);
+  padding: 10px 14px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dict-source-tag {
+  font-size: 0.75rem;
+  background: var(--tag-bg);
+  color: var(--muted);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.dict-source-link {
+  color: var(--accent);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.dict-source-link:hover {
+  text-decoration: underline;
+}
+
+.dict-content {
+  padding: 14px;
+}
+
+/* Lexicon Entry Card Hierarchy */
+.lex-entry-card {
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.lex-entry-card:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.lex-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.lex-entry-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.lex-sense-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--bg-color-alt);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.lex-hw {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-right: 2px;
+}
+
+.lex-translit {
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.lex-pronun {
+  font-size: 0.8rem;
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.lex-entry-tags {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.lex-badge {
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.morph-badge {
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  border: 1px solid var(--border);
+}
+
+.strong-badge {
+  background: var(--tag-bg);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  font-family: monospace;
+  font-size: 0.7rem;
+}
+
+.part-of-speech {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  font-size: 0.76rem;
+  text-transform: capitalize;
+}
+
+/* Interactive Clickable Badges */
+.clickable-term {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.clickable-term:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px var(--shadow);
+  border-color: var(--accent);
+}
+
+.clickable-term:active {
+  transform: translateY(0);
+}
+
+.clickable-term:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.homonym-title {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.def-list {
+  margin: 6px 0 10px 22px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.def-item {
+  margin-bottom: 5px;
+}
+
+/* Verbal Stems (Binyanim) */
+.lex-stems-container {
+  margin-top: 10px;
+  margin-bottom: 12px;
+  background: var(--card-bg-folio);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+.lex-subhead {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.stem-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stem-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.88rem;
+  flex-wrap: wrap;
+}
+
+.stem-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--accent2-soft);
+  color: var(--accent2);
+  padding: 1px 7px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  min-width: 40px;
+  text-align: center;
+}
+
+.stem-form {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.stem-def {
+  color: var(--text);
+  font-size: 0.86rem;
+}
+
+/* Comparative Semitic Etymology & Derivatives */
+.lex-etymology-details,
+.lex-derivatives-details {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card-bg-folio);
+  overflow: hidden;
+  font-size: 0.86rem;
+}
+
+.lex-etymology-summary,
+.lex-derivatives-summary {
+  padding: 7px 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  background: var(--bg-color-alt);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+  transition: background 0.15s ease;
+}
+
+.lex-etymology-summary:hover,
+.lex-derivatives-summary:hover {
+  background: var(--box-bg);
+}
+
+.etym-icon {
+  font-size: 0.9rem;
+}
+
+.deriv-icon {
+  font-size: 0.8rem;
+  color: var(--accent);
+  opacity: 0.9;
+  line-height: 1;
+}
+
+.etym-title,
+.deriv-title {
+  font-family: var(--font-body);
+}
+
+.lex-etymology-content,
+.lex-derivatives-content {
+  padding: 10px 14px;
+  line-height: 1.6;
+  color: var(--text);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 0.9rem;
+}
+
+.lex-cite-link {
+  color: var(--accent2);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent2);
+  font-size: 0.82rem;
+  transition: color 0.15s ease;
+}
+
+.lex-cite-link:hover {
+  color: var(--accent);
+  border-bottom-style: solid;
+}
+
+.hebrew-inline {
+  font-family: var(--font-display);
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Skeleton Loader for Lexicon Queries */
+.dict-skeleton {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 12px;
+  overflow: hidden;
+  background: var(--card-bg);
+}
+
+.dict-skeleton-header {
+  background: var(--bg-color-alt);
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dict-skeleton-body {
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-bar {
+  background: var(--box-bg);
+  border-radius: 4px;
+  height: 14px;
+  position: relative;
+  overflow: hidden;
+  animation: skeletonPulse 1.6s ease-in-out infinite;
+}
+
+.skeleton-bar-title {
+  width: 32%;
+  height: 16px;
+}
+
+.skeleton-bar-tag {
+  width: 18%;
+  height: 14px;
+}
+
+.skeleton-bar-full {
+  width: 92%;
+}
+
+.skeleton-bar-medium {
+  width: 78%;
+}
+
+.skeleton-bar-short {
+  width: 55%;
+}
+
+@keyframes skeletonPulse {
+  0% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.55;
+  }
+}
+
+/* Lexicon Loading Status Caption */
+.lexicon-loading-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 8px 12px;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.loading-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+  animation: dotPulse 1.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes dotPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-bar {
+    animation: none;
+    opacity: 0.75;
+  }
+  .loading-pulse-dot {
+    animation: none;
+    opacity: 0.9;
+  }
+}
+
+/* Responsive Overrides: Lexicon */
+@media (max-width: 640px) {
+  .dict-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
