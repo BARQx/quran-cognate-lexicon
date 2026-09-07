@@ -237,6 +237,7 @@
     <ul class="dialog-list">
       <li><strong>Start with Hebrew:</strong> See the proposed Hebrew cognate and its definitions from Sefaria and Wiktionary.</li>
       <li><strong>See the wider picture:</strong> Compare the root with reconstructed Nabataean, Syriac, Sabaic (Musnad), and Ge'ez forms, letter by letter.</li>
+      <li><strong>Root classifications:</strong> Roots tagged as <em>Weak (معتل)</em>, <em>Assimilating (مثال)</em>, <em>Hollow (جوف)</em>, <em>Defective (ناقص)</em>, or <em>Geminate (مضاعف)</em> have flexible letters that shift or contract across Semitic languages. <button type="button" class="research-action" style="margin-left:4px;" onclick="document.getElementById('sec1-dialog').close(); openRootMorphologyDialog();">Learn more</button></li>
       <li><strong>Keep your notes:</strong> Copy a clean Markdown research summary in one click.</li>
     </ul>
 
@@ -308,6 +309,44 @@
     </div>
 
     <button class="close-btn" onclick="document.getElementById('alt-spelling-dialog').close()">Got it</button>
+  </div>
+</dialog>
+
+<dialog id="root-morphology-dialog" class="mobile-dialog">
+  <div class="dialog-content">
+    <h3>Understanding Root Classifications</h3>
+    
+    <div id="root-dialog-dynamic" class="dialog-note" style="margin-bottom: 14px; font-style: normal; display: none;">
+      <!-- Populated dynamically when clicked from an analyzed root -->
+    </div>
+
+    <p>
+      In Arabic and sister Semitic languages (Hebrew, Aramaic, Ge'ez), most words are built around a 3-consonant foundation (like <em>k-t-b</em> for writing). But some roots contain <strong>flexible letters</strong> that change shape, melt into vowels, or disappear:
+    </p>
+
+    <ul class="dialog-list">
+      <li id="morph-item-weak">
+        <strong>Weak Root (معتل):</strong> A root containing the flexible vowel-letters <strong>و</strong> (waw), <strong>ي</strong> (ya), or <strong>ا</strong> (alif). Because these act like vowels rather than firm consonants, they regularly stretch, transform, or drop out when words are conjugated or shift across languages.
+      </li>
+      <li id="morph-item-assimilating">
+        <strong>Assimilating Initial (مثال / First Weak):</strong> The root begins with <strong>و</strong> or <strong>ي</strong> (e.g., وعد <em>w-'-d</em>). In Hebrew, an initial Arabic <em>Waw</em> almost always shifted to <em>Yod</em> (י)—for example, Arabic <em>walad</em> (ولد "child") corresponds to Hebrew <em>yeled</em> (ילד). The first letter also often vanishes in Arabic present-tense verbs (like <em>ya'idu</em> يَعِدُ).
+      </li>
+      <li id="morph-item-hollow">
+        <strong>Hollow Medial (جوف / أجوف / Second Weak):</strong> The middle consonant is <strong>و</strong> or <strong>ي</strong> (e.g., قول <em>q-w-l</em> or بيع <em>b-y-'</em>). It is called "hollow" because the middle consonant collapses into a long vowel (like <em>qāla</em> قال "he said" or <em>bā'a</em> باع "he sold") rather than holding a firm consonant sound.
+      </li>
+      <li id="morph-item-defective">
+        <strong>Defective Final (ناقص / Third Weak):</strong> The root ends in <strong>و</strong>, <strong>ي</strong>, or <strong>ا</strong> (e.g., دعو <em>d-'-w</em> or هدي <em>h-d-y</em>). The final letter is called "defective" because it regularly shortens, becomes an alif maqsoora (ى), or disappears entirely in commands and jussive forms (like <em>yad'ū</em> يدعو becoming <em>ud'u</em> اُدْعُ).
+      </li>
+      <li id="morph-item-geminate">
+        <strong>Geminate / Doubled (مضاعف):</strong> The second and third letters are twins (e.g., مدد <em>m-d-d</em> or حقق <em>h-q-q</em>), or the root is a 2-letter base. In everyday speech and text, these identical consonants usually fuse together into a single doubled sound with a shaddah (like <em>madda</em> مَدَّ).
+      </li>
+    </ul>
+
+    <div class="dialog-note">
+      <strong>Why this matters for cognates:</strong> Because weak letters shift and drop out easily over millennia, cognates in Hebrew or Syriac often look slightly different on the surface (e.g., <em>w-l-d</em> vs. <em>y-l-d</em>). Recognizing these patterns helps connect words that share the same ancestral roots.
+    </div>
+
+    <button class="close-btn" onclick="document.getElementById('root-morphology-dialog').close()">Got it</button>
   </div>
 </dialog>
 

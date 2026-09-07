@@ -6,9 +6,37 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Custom Theme-Aware CSS Scrollbar (Replaces Windows OS default scrollbar) */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width, 10px);
+  height: var(--scrollbar-width, 10px);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 6px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
 }
 
 html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
   transition: background-color 0.25s ease;
 }
 

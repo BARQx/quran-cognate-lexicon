@@ -31,6 +31,9 @@
   --accent3: #a4243b;
   --accent3-hover: #821b2d;
   --accent3-solid: #a4243b; /* light mode already passes AA (7.26:1) with white text at this weight */
+  --scrollbar-track: #ece0c4;
+  --scrollbar-thumb: #cbbe9f;
+  --scrollbar-thumb-hover: #a8542f;
   
   /* Per-script identity colors — light mode */
   --script-arb: #2b2118;
@@ -92,6 +95,9 @@ html[data-theme="dark"] {
   --accent3: #e0687e;
   --accent3-hover: #ea7d92;
   --accent3-solid: #c14a5f; /* darker variant for solid-fill buttons — plain --accent3 fails AA (3.26:1) with white text at this weight */
+  --scrollbar-track: #14181c;
+  --scrollbar-thumb: #2c353d;
+  --scrollbar-thumb-hover: #f2903f;
   
   /* Per-script identity colors — dark mode (brightened for contrast) */
   --script-arb: #ece4d0;

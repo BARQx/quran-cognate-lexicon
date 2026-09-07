@@ -274,6 +274,7 @@ summary:focus-visible {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
   margin-bottom: 12px;
 }
 
@@ -281,9 +282,105 @@ summary:focus-visible {
   background: var(--badge-bg);
   color: var(--badge-text);
   font-size: 0.8rem;
-  padding: 3px 8px;
-  border-radius: 4px;
+  padding: 4px 10px;
+  border-radius: 6px;
   font-weight: 600;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  line-height: 1.25;
+}
+
+/* Light mode hover: rich deep teal background with high-contrast crisp white text */
+.root-type-badge:hover,
+.root-type-badge:focus-visible {
+  background: #345c5c;
+  color: #ffffff;
+  border-color: #264646;
+  box-shadow: 0 2px 6px rgba(52, 92, 92, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Dark mode hover: luminous teal with crisp bright ice-white text */
+html[data-theme="dark"] .root-type-badge:hover,
+html[data-theme="dark"] .root-type-badge:focus-visible {
+  background: #254747;
+  color: #e8ffff;
+  border-color: #4da6a6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.badge-info-icon {
+  font-size: 0.72rem;
+  opacity: 0.8;
+  display: inline-block;
+  line-height: 1;
+}
+
+.root-type-badge:hover .badge-info-icon,
+.root-type-badge:focus-visible .badge-info-icon {
+  opacity: 1;
+}
+
+.root-type-help-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 10px;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.18s ease;
+  line-height: 1.25;
+}
+
+.root-type-help-btn::before {
+  content: "?";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.root-type-help-btn:hover,
+.root-type-help-btn:focus-visible {
+  background: var(--card-bg);
+  border-color: var(--accent2);
+  color: var(--accent2);
+  box-shadow: 0 2px 5px var(--shadow);
+  transform: translateY(-1px);
+}
+
+html[data-theme="dark"] .root-type-help-btn:hover,
+html[data-theme="dark"] .root-type-help-btn:focus-visible {
+  background: var(--box-bg);
+  border-color: var(--accent2);
+  color: var(--accent2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.dialog-highlight-item {
+  background: var(--box-bg);
+  border-left: 3px solid var(--accent2);
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-left: -10px;
 }
 
 /* Breakdown Table */
@@ -620,6 +717,13 @@ summary {
   margin-bottom: 8px;
 }
 
+
+/* Modal Scroll Lock (zero layout-shift via JS scrollbar compensation) */
+html.modal-open,
+body.modal-open {
+  overflow: hidden !important;
+}
+
 /* Modal Dialogs */
 .mobile-dialog {
   border: 1px solid var(--border);
@@ -628,6 +732,12 @@ summary {
   color: var(--text);
   padding: 24px;
   max-width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--card-bg);
   width: 90%;
   margin: auto;
   box-shadow: 0 10px 30px var(--shadow);
@@ -758,6 +868,10 @@ summary {
     border-bottom-right-radius: 0;
     width: 100%;
     max-width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   @keyframes slideUp {

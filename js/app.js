@@ -70,7 +70,16 @@ async function convertAndFetch() {
     /* URL API unavailable — deep-linking degrades silently */
   }
 
-  rootTagBar.innerHTML = morphTags.map(t => `<span class="root-type-badge">${t}</span>`).join('');
+  if (morphTags.length > 0) {
+    rootTagBar.innerHTML = morphTags.map(t => 
+      `<button type="button" class="root-type-badge" onclick="openRootMorphologyDialog('${t.replace(/'/g, "\\'")}')" title="Click to learn what '${t}' means in plain English">
+        ${t}
+        <span class="badge-info-icon" aria-hidden="true">ⓘ</span>
+      </button>`
+    ).join('') + `<button type="button" class="root-type-help-btn" onclick="openRootMorphologyDialog()" title="Learn what these root classifications mean">What do these mean?</button>`;
+  } else {
+    rootTagBar.innerHTML = '';
+  }
   arabicDisplay.innerText = formatSurrogateAwareString(cleanInput);
   nabataeanDisplay.innerText = formatSurrogateAwareString(nabataean);
   hebrewDisplay.innerText = formatSurrogateAwareString(activeHebrew);
@@ -399,6 +408,67 @@ function openAlternateSpellingDialog() {
   }
 
   dialog.showModal();
+  dialog.scrollTop = 0;
+}
+
+function openRootMorphologyDialog(highlightTag) {
+  const dialog = document.getElementById('root-morphology-dialog');
+  if (!dialog) return;
+
+  const dynamicBox = document.getElementById('root-dialog-dynamic');
+  if (dynamicBox) {
+    if (lastAnalysis && lastAnalysis.root) {
+      const tags = detectRootMorphology(lastAnalysis.root);
+      if (tags.length > 0) {
+        dynamicBox.style.display = 'block';
+        dynamicBox.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:4px;">
+            <span><strong>Active Root:</strong> <span dir="rtl" style="font-weight:700; font-size:1.05rem;">${lastAnalysis.root}</span></span>
+            <span style="font-size:0.8rem; color:var(--accent); font-weight:600;">${tags.join(' · ')}</span>
+          </div>
+          <div style="font-size:0.82rem; line-height:1.4; color:var(--text);">
+            This root contains flexible letters. See highlighted classification(s) below for how they affect pronunciations and cognate matches across sister languages.
+          </div>
+        `;
+      } else {
+        dynamicBox.style.display = 'none';
+      }
+    } else {
+      dynamicBox.style.display = 'none';
+    }
+  }
+
+  // Clear previous highlights
+  const allItems = ['morph-item-weak', 'morph-item-assimilating', 'morph-item-hollow', 'morph-item-defective', 'morph-item-geminate'];
+  allItems.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('dialog-highlight-item');
+  });
+
+  // Highlight specific item if clicked directly or if detected for current root
+  const tagsToHighlight = [];
+  if (highlightTag) {
+    tagsToHighlight.push(highlightTag);
+  } else if (lastAnalysis && lastAnalysis.tags) {
+    tagsToHighlight.push(...lastAnalysis.tags);
+  }
+
+  tagsToHighlight.forEach(tag => {
+    let targetId = '';
+    if (tag.includes('Weak') || tag.includes('معتل')) targetId = 'morph-item-weak';
+    else if (tag.includes('Assimilating') || tag.includes('مثال')) targetId = 'morph-item-assimilating';
+    else if (tag.includes('Hollow') || tag.includes('جوف')) targetId = 'morph-item-hollow';
+    else if (tag.includes('Defective') || tag.includes('ناقص')) targetId = 'morph-item-defective';
+    else if (tag.includes('Geminate') || tag.includes('مضاعف')) targetId = 'morph-item-geminate';
+
+    if (targetId) {
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) targetEl.classList.add('dialog-highlight-item');
+    }
+  });
+
+  dialog.showModal();
+  dialog.scrollTop = 0;
 }
 
 function linkTile(url, title, desc, categoryClass = '') {
@@ -487,11 +557,105 @@ function copyArabicSourceLinks() {
   navigator.clipboard.writeText(links.join('\n\n')).then(() => alert('Arabic source links copied to clipboard.'));
 }
 
-// Initialize research shelf and backdrop listeners
+// Initialize research shelf
 renderResearchShelf();
 
-document.querySelectorAll('dialog').forEach(dialog => {
-  dialog.addEventListener('click', (e) => {
-    if (e.target === dialog) dialog.close();
-  });
+// Manage background scroll lock without hiding the main page scrollbar (prevents layout shift)
+let lockedScrollY = 0;
+let isModalOpen = false;
+
+function isPointInsideDialog(clientX, clientY, dialog) {
+  if (!dialog || !dialog.open) return false;
+  const rect = dialog.getBoundingClientRect();
+  return (
+    clientX >= rect.left &&
+    clientX <= rect.right &&
+    clientY >= rect.top &&
+    clientY <= rect.bottom
+  );
+}
+
+function updateModalState() {
+  const openDialogs = Array.from(document.querySelectorAll('dialog')).filter(d => d.open);
+  if (openDialogs.length > 0) {
+    if (!isModalOpen) {
+      lockedScrollY = window.scrollY || window.pageYOffset || 0;
+      isModalOpen = true;
+
+      // Compensate for scrollbar width so the page layout never shifts
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      if (scrollbarWidth > 0) {
+        const computedPadding = parseFloat(getComputedStyle(document.body).paddingRight) || 20;
+        document.body.style.paddingRight = `${computedPadding + scrollbarWidth}px`;
+      }
+      document.documentElement.classList.add('modal-open');
+      document.body.classList.add('modal-open');
+    }
+    openDialogs.forEach(d => {
+      if (!d.dataset.modalInit) {
+        d.scrollTop = 0;
+        d.dataset.modalInit = 'true';
+      }
+    });
+  } else {
+    if (isModalOpen) {
+      isModalOpen = false;
+      document.body.style.paddingRight = '';
+      document.documentElement.classList.remove('modal-open');
+      document.body.classList.remove('modal-open');
+      window.scrollTo(window.scrollX || 0, lockedScrollY);
+      document.querySelectorAll('dialog').forEach(d => {
+        delete d.dataset.modalInit;
+      });
+    }
+  }
+}
+
+const dialogObserver = new MutationObserver(() => {
+  updateModalState();
 });
+
+document.querySelectorAll('dialog').forEach(dialog => {
+  dialogObserver.observe(dialog, { attributes: true, attributeFilter: ['open'] });
+  dialog.addEventListener('close', updateModalState);
+});
+
+// Prevent wheel scrolling on the background page while a dialog is visible
+window.addEventListener('wheel', (e) => {
+  const openDialog = document.querySelector('dialog[open]');
+  if (!openDialog) return;
+  if (!isPointInsideDialog(e.clientX, e.clientY, openDialog)) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
+// Prevent touch swiping on the background page while a dialog is visible
+window.addEventListener('touchmove', (e) => {
+  const openDialog = document.querySelector('dialog[open]');
+  if (!openDialog) return;
+  if (e.touches && e.touches[0]) {
+    if (!isPointInsideDialog(e.touches[0].clientX, e.touches[0].clientY, openDialog)) {
+      e.preventDefault();
+    }
+  }
+}, { passive: false });
+
+// Prevent navigation keys from scrolling the background page while a dialog is visible
+window.addEventListener('keydown', (e) => {
+  const openDialog = document.querySelector('dialog[open]');
+  if (!openDialog) return;
+  const navKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
+  if (navKeys.includes(e.key) && !openDialog.contains(document.activeElement)) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
+// Pin background window scroll position so the page never moves while a modal is visible
+window.addEventListener('scroll', () => {
+  if (isModalOpen) {
+    const currentY = window.scrollY || window.pageYOffset || 0;
+    if (Math.abs(currentY - lockedScrollY) > 1) {
+      window.scrollTo(window.scrollX || 0, lockedScrollY);
+    }
+  }
+}, { passive: false });
