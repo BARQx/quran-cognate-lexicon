@@ -16,6 +16,11 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://qcl.barqx.me/">
 
+  <!-- Favicon & Brand Theme -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.svg">
+  <meta name="theme-color" content="#994622">
+
   <!-- Open Graph / Facebook / WhatsApp Preview Card -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://qcl.barqx.me/">
@@ -371,6 +376,32 @@
     </div>
 
     <button class="close-btn" type="button" onclick="document.getElementById('script-info-dialog').close()">Got it</button>
+  </div>
+</dialog>
+
+<!-- Lexicon Terms Educational Dialog (Layman Explanations for Stems, Morphology & Strong Numbers) -->
+<dialog id="lexicon-term-dialog" class="mobile-dialog" aria-labelledby="lex-dialog-title">
+  <div class="dialog-content">
+    <div class="lex-dialog-head">
+      <div class="lex-dialog-topline">
+        <h3 id="lex-dialog-title">Grammar Concept</h3>
+        <span id="lex-dialog-category" class="lex-dialog-category-tag">Hebrew Grammar</span>
+      </div>
+      <div id="lex-dialog-arabic-wrap" class="lex-dialog-arabic-wrap" style="display:none;">
+        <span class="lex-dialog-arabic-label">Direct Arabic Equivalent:</span>
+        <span id="lex-dialog-arabic-badge" class="lex-dialog-arabic-badge">Form I (فَعَلَ)</span>
+      </div>
+    </div>
+
+    <div id="lex-dialog-body" class="lex-dialog-body">
+      <!-- Injected dynamically -->
+    </div>
+
+    <div id="lex-dialog-action-area" class="lex-dialog-action-area" style="display:none; margin-top:14px;">
+      <!-- Dynamic action/link (e.g. Strong's Concordance link) -->
+    </div>
+
+    <button class="close-btn" type="button" onclick="document.getElementById('lexicon-term-dialog').close()">Got it</button>
   </div>
 </dialog>
 

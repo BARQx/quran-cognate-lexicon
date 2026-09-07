@@ -362,16 +362,34 @@ function copyResearchBrief() {
         markdown += `**${dict}**\n`;
         entries.forEach((group, index) => {
           const hw = cleanText(group.headword);
-          const senseTitle = hw ? `Sense ${index + 1}: ${hw}` : `Sense ${index + 1}`;
+          let senseTitle = hw ? `Sense ${index + 1}: ${hw}` : `Sense ${index + 1}`;
+          if (group.transliteration) senseTitle += ` [${group.transliteration}]`;
+          if (group.strongNumber) senseTitle += ` (#${group.strongNumber})`;
           
           markdown += `* **${senseTitle}**\n`;
 
-          group.defs.forEach(d => {
+          (group.defs || []).forEach(d => {
             const sanitized = cleanText(d);
             if (sanitized) {
               markdown += `  * ${sanitized}\n`;
             }
           });
+
+          if (group.stems && group.stems.length > 0) {
+            group.stems.forEach(s => {
+              const stemParts = [s.stem, s.form ? `(${s.form})` : '', s.defs ? s.defs.join('; ') : ''].filter(Boolean).join(' ');
+              if (stemParts) {
+                markdown += `  * *Verbal Stem:* ${cleanText(stemParts)}\n`;
+              }
+            });
+          }
+
+          if (group.etymology) {
+            const etymText = cleanText(group.etymology);
+            if (etymText) {
+              markdown += `  * *Comparative Etymology:* ${etymText}\n`;
+            }
+          }
         });
         markdown += `\n`;
       }
@@ -384,10 +402,14 @@ function copyResearchBrief() {
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = lastAnalysis.wiktionary;
       
-      const groups = tempDiv.querySelectorAll('.homonym-group');
+      const groups = tempDiv.querySelectorAll('.homonym-group, .lex-entry-card');
       if (groups.length > 0) {
         groups.forEach(g => {
-          const title = cleanText(g.querySelector('.homonym-title')?.textContent || '');
+          const title = cleanText(
+            g.querySelector('.part-of-speech')?.textContent || 
+            g.querySelector('.homonym-title')?.textContent || 
+            g.querySelector('.lex-entry-meta')?.textContent || ''
+          );
           if (title) {
             markdown += `**${title}**\n`;
           }
@@ -1005,6 +1027,284 @@ function copyArabicSourceLinks() {
     .map(link => `${link.textContent.trim().replace(/\s+/g, ' ')}\n${link.href}`);
   if (!links.length) return;
   navigator.clipboard.writeText(links.join('\n\n')).then(() => alert('Arabic source links copied to clipboard.'));
+}
+
+// ============================================================
+// Lexicon Term Educational Explanations (Layman Language)
+// ============================================================
+
+const LEXICON_TERMS_DATA = {
+  stems: {
+    'Qal': {
+      title: 'Qal (קַל) — Form I Verb',
+      category: 'Hebrew Verbal Stem (Binyan)',
+      arabic: 'Form I: فَعَلَ (الفِعْل المُجَرَّد)',
+      summary: 'The basic, simple active form of a Semitic verb. It has no prefixes, no doubled consonants, and no added causative sounds.',
+      whatItDoes: 'Represents the straightforward, primary action (e.g. "he wrote", "he sent", "he was complete"). In Hebrew grammar, the word <em>Qal</em> literally means <strong>"light"</strong> or <strong>"simple"</strong> because the root is in its purest state.',
+      example: 'Root <strong>ש-ג-ר</strong> (*sh-g-r*) in Qal = <strong>שָׁגַר</strong> (*shāgar*) → <em>"he sent, sent off; it flowed"</em> (cognate to Arabic سَجَرَ).'
+    },
+    'Niph.': {
+      title: 'Niphal (נִפְעַל) — Form VII Verb',
+      category: 'Hebrew Verbal Stem (Binyan)',
+      arabic: 'Form VII: اِنْفَعَلَ (المُطاوَعَة / المَبْنِيّ لِلْمَجْهُول)',
+      summary: 'The passive or reflexive partner of the simple Qal stem. It is formed by prefixing the letter Nun (נ).',
+      whatItDoes: 'Indicates that the action was received by the subject ("was written", "was done") or happened automatically ("flowed forth", "became visible").',
+      example: 'From <strong>כָּתַב</strong> (*katav*, "he wrote") → <strong>נִכְתַּב</strong> (*nikhtav*, <em>"was written down / recorded"</em>, exact parallel to Arabic اِنْكَتَبَ).'
+    },
+    'Pi.': {
+      title: "Pi'el (פִּעֵל) — Form II Verb (Intensive / Causative)",
+      category: 'Hebrew Verbal Stem (Binyan)',
+      arabic: 'Form II: فَعَّلَ (التَّكْثِير والتَّعْدِيَة بالتَّضْعِيف)',
+      summary: 'An intensive, causative, or thorough action formed by doubling the middle consonant (dagesh / shaddah).',
+      whatItDoes: 'In Semitic linguistics, doubling the middle letter deepens the action or makes it causative. For instance, while simple Qal <em>shalam</em> means "to be at peace", the Pi\'el <em>shillem</em> means "to repay in full, to make completely whole" (exact cognate of Arabic سَلَّمَ).',
+      example: 'From <strong>שָׁלֵם</strong> (*shalem*, "complete") → <strong>שִׁלֵּם</strong> (*shillem*, <em>"he repaid / settled in full"</em>, Ar. سَلَّمَ).'
+    },
+    'Pu.': {
+      title: "Pu'al (פֻּעַל) — Form II Passive",
+      category: 'Hebrew Verbal Stem (Binyan)',
+      arabic: 'Form II Passive: فُعِّلَ',
+      summary: 'The passive voice of the intensive Pi\'el stem.',
+      whatItDoes: 'Shows that the intensive or thorough action was received by the subject ("was repaid", "was taught", "was completely settled").',
+      example: '<strong>שֻׁלַּם</strong> (*shullam*) → <em>"was paid off / settled in full"</em> (cognate to Arabic سُلِّمَ).'
+    },
+    'Hiph.': {
+      title: "Hiph'il (הִפְעִיל) — Form IV Verb (Causative)",
+      category: 'Hebrew Verbal Stem (Binyan)',
+      arabic: 'Form IV: أَفْعَلَ (التَّعْدِيَة بِالهَمْزَة)',
+      summary: 'The causative stem: "to cause or make someone else perform the action".',
+      whatItDoes: 'Hebrew uses a prefixed "H" (הִ־) for causation where Arabic uses an "Alif/Hamza" (أَـ). For example, if the simple verb means "he wrote", the causative Hiph\'il means "he caused someone to write" → "he dictated"!',
+      example: '<strong>הִכְתִּיב</strong> (*hikhtiv*) → <em>"he dictated / caused to write"</em> (Ar. أَكْتَبَ); <strong>הִשְׁלִים</strong> (*hishlim*) → <em>"he made peace / submitted"</em> (exact cognate to Arabic أَسْلَمَ).'
+    },
+    'Hoph.': {
+      title: "Hoph'al (הָפְעַל) — Form IV Causative Passive",
+      category: 'Hebrew Verbal Stem (Binyan)',
+      arabic: 'Form IV Passive: أُفْعِلَ',
+      summary: 'The passive voice of the causative Hiph\'il stem ("was made to happen").',
+      whatItDoes: 'Shows that a caused action was experienced by the subject (e.g. "it was dictated", "was caused to surrender").',
+      example: '<strong>הֻכְתַּב</strong> (*hukhtav*) → <em>"was dictated / recorded"</em> (cognate to Arabic أُكْتِبَ).'
+    },
+    'Hith.': {
+      title: "Hithpa'el (הִתְפַּעֵל) — Form V Verb (Reflexive / Reciprocal)",
+      category: 'Hebrew Verbal Stem (Binyan)',
+      arabic: 'Form V / VI: تَفَعَّلَ / تَفَاعَلَ (المُطاوَعَة والمُشَارَكَة)',
+      summary: 'The reflexive, reciprocal, or back-and-forth stem, formed with a prefixed "Hit-" (הִתְ־).',
+      whatItDoes: 'Describes an action done to oneself, with each other, or repeatedly over time (e.g. "they corresponded together", "he pretended to be X").',
+      example: '<strong>הִתְכַּתֵּב</strong> (*hitkattev*) → <em>"he corresponded with / wrote back and forth"</em> (cognate to Arabic تَكَاتَبَ).'
+    },
+    'Nith.': {
+      title: "Nithpa'el (נִתְפַּעֵל) — Rabbinic Passive-Reflexive",
+      category: 'Hebrew Verbal Stem (Binyan)',
+      arabic: 'Form V Passive: تُفُعِّلَ',
+      summary: 'A Mishnaic / Talmudic Hebrew stem blending Niphal (נ) and Hithpa\'el (ת).',
+      whatItDoes: 'Serves as the everyday passive of Hithpa\'el in classical Rabbinic literature (e.g. "became reconciled", "was appeased").',
+      example: '<strong>נִתְפַּיֵּס</strong> (*nitpayyes*) → <em>"was pacified / reconciled"</em>.'
+    },
+    'Shiph.': {
+      title: "Shiph'el (שִׁפְעֵל) — Archaic Causative",
+      category: 'Hebrew Verbal Stem (Binyan)',
+      arabic: 'Form X: اِسْتَفْعَلَ / Sabaic Causative (s¹- stem)',
+      summary: 'An ancient Semitic causative stem formed with an initial "Sh" (ש) prefix.',
+      whatItDoes: 'Preserved in ancient Aramaic, Akkadian, and South Arabian (Sabaic) inscriptions, functioning as an archaic causative prefix.',
+      example: '<strong>שַׁעְבֵּד</strong> (*sha\'bed*) → <em>"he subjugated / caused to serve"</em> (from root ע-ב-ד "servant/worship", Ar. ع-ب-د).'
+    }
+  },
+
+  morph: {
+    'pr. n. m.': {
+      title: 'Proper Noun, Masculine (pr. n. m.)',
+      category: 'Part of Speech',
+      arabic: 'اِسْمُ عَلَمٍ مُذَكَّر',
+      summary: 'A specific personal name of a man (e.g. Shallum, David, Solomon).',
+      whatItDoes: 'Identifies an individual historical or biblical person rather than a common vocabulary word.'
+    },
+    'pr. n. f.': {
+      title: 'Proper Noun, Feminine (pr. n. f.)',
+      category: 'Part of Speech',
+      arabic: 'اِسْمُ عَلَمٍ مُؤَنَّث',
+      summary: 'A specific personal name of a woman (e.g. Sarah, Miriam).',
+      whatItDoes: 'Identifies a named female historical or biblical figure.'
+    },
+    'pr. n. loc.': {
+      title: 'Proper Noun, Location (pr. n. loc.)',
+      category: 'Part of Speech',
+      arabic: 'اِسْمُ مَكَانٍ / بَلَد',
+      summary: 'A geographical proper name (city, mountain, river, or territory).',
+      whatItDoes: 'Designates a specific place (e.g. Jerusalem, Sinai, Salem).'
+    },
+    'n-m': {
+      title: 'Noun, Masculine (n-m / m.)',
+      category: 'Part of Speech',
+      arabic: 'اِسْمٌ مُذَكَّر',
+      summary: 'A noun of masculine grammatical gender.',
+      whatItDoes: 'Represents a person, object, or concept treated grammatically as masculine (e.g. <em>shalom</em> = peace, <em>melekh</em> = king).'
+    },
+    'n-f': {
+      title: 'Noun, Feminine (n-f / f.)',
+      category: 'Part of Speech',
+      arabic: 'اِسْمٌ مُؤَنَّث',
+      summary: 'A noun of feminine grammatical gender.',
+      whatItDoes: 'Represents a person, object, or abstract concept treated grammatically as feminine (e.g. <em>malkah</em> = queen, <em>shalvah</em> = tranquility).'
+    },
+    'v': {
+      title: 'Verb (v. / vb.)',
+      category: 'Part of Speech',
+      arabic: 'فِعْل',
+      summary: 'An action, process, or state of being.',
+      whatItDoes: 'Describes what someone did, does, or is experiencing.'
+    },
+    'adj': {
+      title: 'Adjective (adj.)',
+      category: 'Part of Speech',
+      arabic: 'صِفَة / نَعْت',
+      summary: 'A descriptive word modifying a noun.',
+      whatItDoes: 'Describes a quality or property (e.g. <em>shalem</em> = whole, sound, complete).'
+    },
+    'adv': {
+      title: 'Adverb (adv.)',
+      category: 'Part of Speech',
+      arabic: 'ظَرْف / حَال',
+      summary: 'A word describing how, when, or where an action took place.',
+      whatItDoes: 'Modifies a verb, adjective, or clause.'
+    },
+    'prep': {
+      title: 'Preposition (prep.)',
+      category: 'Part of Speech',
+      arabic: 'حَرْفُ جَرّ',
+      summary: 'A relational connecting word (e.g. in, with, from, upon).',
+      whatItDoes: 'Links a noun or pronoun to the rest of the sentence.'
+    },
+    'intr. v.': {
+      title: 'Intransitive Verb (intr. v.)',
+      category: 'Part of Speech',
+      arabic: 'فِعْلٌ لَازِم',
+      summary: 'A verb that does not take a direct object.',
+      whatItDoes: 'The action stays with the subject (e.g. "it flowed", "he slept", "it ended").'
+    },
+    'tr. v.': {
+      title: 'Transitive Verb (tr. v.)',
+      category: 'Part of Speech',
+      arabic: 'فِعْلٌ مُتَعَدٍّ',
+      summary: 'A verb that acts directly on an object.',
+      whatItDoes: 'Requires a receiver of the action (e.g. "he wrote a letter", "he sent a messenger").'
+    }
+  }
+};
+
+function openLexiconTermDialog(type, code, extraData) {
+  const dialog = document.getElementById('lexicon-term-dialog');
+  if (!dialog) return;
+
+  const titleEl = document.getElementById('lex-dialog-title');
+  const catEl = document.getElementById('lex-dialog-category');
+  const arabicWrap = document.getElementById('lex-dialog-arabic-wrap');
+  const arabicBadge = document.getElementById('lex-dialog-arabic-badge');
+  const bodyEl = document.getElementById('lex-dialog-body');
+  const actionArea = document.getElementById('lex-dialog-action-area');
+
+  let title = code || 'Grammar Term';
+  let category = 'Hebrew Lexicon';
+  let arabic = '';
+  let summary = '';
+  let whatItDoes = '';
+  let example = '';
+  let actionHtml = '';
+
+  const cleanCode = (code || '').trim().replace(/^—\s*/, '').trim();
+
+  if (type === 'stem') {
+    category = 'Verbal Stem (Binyan)';
+    let found = null;
+    for (const [k, v] of Object.entries(LEXICON_TERMS_DATA.stems)) {
+      if (cleanCode.toLowerCase().startsWith(k.toLowerCase().replace(/\./g, ''))) {
+        found = v;
+        break;
+      }
+    }
+    if (found) {
+      title = found.title;
+      category = found.category;
+      arabic = found.arabic;
+      summary = found.summary;
+      whatItDoes = found.whatItDoes;
+      example = found.example;
+    } else {
+      title = `${cleanCode} (Verbal Stem)`;
+      summary = `A derived verbal conjugation pattern (Binyan) in Hebrew modifying the root's meaning.`;
+    }
+  } else if (type === 'morph' || type === 'pos') {
+    category = 'Part of Speech';
+    const lower = cleanCode.toLowerCase();
+    let found = null;
+
+    if (lower.includes('pr') && lower.includes('loc')) found = LEXICON_TERMS_DATA.morph['pr. n. loc.'];
+    else if (lower.includes('pr') && lower.includes('f')) found = LEXICON_TERMS_DATA.morph['pr. n. f.'];
+    else if (lower.includes('pr') && lower.includes('m')) found = LEXICON_TERMS_DATA.morph['pr. n. m.'];
+    else if (lower === 'n-m' || lower === 'm.' || lower === 'm' || lower === 'noun') found = LEXICON_TERMS_DATA.morph['n-m'];
+    else if (lower === 'n-f' || lower === 'f.' || lower === 'f') found = LEXICON_TERMS_DATA.morph['n-f'];
+    else if (lower.startsWith('intr')) found = LEXICON_TERMS_DATA.morph['intr. v.'];
+    else if (lower.startsWith('tr')) found = LEXICON_TERMS_DATA.morph['tr. v.'];
+    else if (lower.startsWith('v')) found = LEXICON_TERMS_DATA.morph['v'];
+    else if (lower.startsWith('adj')) found = LEXICON_TERMS_DATA.morph['adj'];
+    else if (lower.startsWith('adv')) found = LEXICON_TERMS_DATA.morph['adv'];
+    else if (lower.startsWith('prep')) found = LEXICON_TERMS_DATA.morph['prep'];
+
+    if (found) {
+      title = found.title;
+      category = found.category;
+      arabic = found.arabic;
+      summary = found.summary;
+      whatItDoes = found.whatItDoes;
+    } else {
+      title = cleanCode;
+      summary = `Grammatical classification indicating how this word functions in a sentence.`;
+    }
+  } else if (type === 'strong') {
+    title = `Strong's Concordance #${cleanCode}`;
+    category = 'Biblical Lexical Index';
+    arabic = '';
+    summary = `Strong's Concordance is a universal indexing system created by Dr. James Strong in 1890. Every unique root and vocabulary word in the Hebrew Bible was assigned a permanent index number from #1 to #8674.`;
+    whatItDoes = `Because Hebrew words can appear with different prefixes, vowel points, or spelling variations across manuscripts and translations, scholars use <strong>Strong's Numbers</strong> as an unambiguous index ID. When a dictionary lists <em>#${cleanCode}</em>, it points directly to that exact biblical Hebrew entry regardless of how it is translated or vocalized.`;
+    example = '';
+    actionHtml = '';
+  }
+
+  titleEl.textContent = title;
+  catEl.textContent = category;
+
+  if (arabic) {
+    arabicWrap.style.display = 'flex';
+    arabicBadge.textContent = arabic;
+  } else {
+    arabicWrap.style.display = 'none';
+  }
+
+  let bodyHtml = `<p><strong>Summary:</strong> ${summary}</p>`;
+  if (whatItDoes) {
+    bodyHtml += `<p><strong>How it works:</strong> ${whatItDoes}</p>`;
+  }
+  if (example) {
+    bodyHtml += `
+      <div class="lex-dialog-example-card">
+        <div class="lex-dialog-example-title">Concrete Example:</div>
+        <div>${example}</div>
+      </div>`;
+  }
+  bodyEl.innerHTML = bodyHtml;
+
+  if (actionHtml) {
+    actionArea.innerHTML = actionHtml;
+    actionArea.style.display = 'block';
+  } else {
+    actionArea.style.display = 'none';
+    actionArea.innerHTML = '';
+  }
+
+  // Backdrop click listener to close
+  dialog.onclick = (e) => {
+    if (e.target === dialog) dialog.close();
+  };
+
+  dialog.showModal();
 }
 
 // Initialize research shelf

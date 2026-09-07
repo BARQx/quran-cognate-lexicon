@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="pGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffefb"/>
+      <stop offset="50%" stop-color="#f5ecda"/>
+      <stop offset="100%" stop-color="#e6d3b4"/>
+    </linearGradient>
+    <linearGradient id="cGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e2d0ad"/>
+      <stop offset="100%" stop-color="#c4ad83"/>
+    </linearGradient>
+    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a8542f"/>
+      <stop offset="100%" stop-color="#732e12"/>
+    </linearGradient>
+    <filter id="scrollShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.38"/>
+    </filter>
+  </defs>
+
+  <style>
+    .scroll-body { fill: url(#pGrad); stroke: #783515; stroke-width: 1.2; filter: url(#scrollShadow); }
+    .scroll-curl { fill: url(#cGrad); stroke: #783515; stroke-width: 1.2; }
+    .scroll-roller { fill: url(#edgeGrad); stroke: #5c2009; stroke-width: 0.8; }
+    .scroll-line { stroke: #997850; stroke-width: 1.8; stroke-linecap: round; opacity: 0.75; }
+    @media (prefers-color-scheme: dark) {
+      .scroll-line { stroke: #7a5c36; opacity: 0.85; }
+    }
+  </style>
+
+  <!-- Wooden/Cinnabar Spindle Handles at Top Roll -->
+  <rect class="scroll-roller" x="6" y="8" width="52" height="4" rx="2"/>
+  <circle class="scroll-roller" cx="6" cy="10" r="3"/>
+  <circle class="scroll-roller" cx="58" cy="10" r="3"/>
+
+  <!-- Top Curled Roll -->
+  <path class="scroll-curl" d="M 10,10 C 10,5 18,5 32,5 C 46,5 54,5 54,10 C 54,15 46,15 32,15 C 18,15 10,15 10,10 Z"/>
+
+  <!-- Main Parchment Sheet -->
+  <path class="scroll-body" d="
+    M 10,10
+    C 12,18 12,38 10,52
+    C 10,56 16,58 32,58
+    C 48,58 54,56 54,52
+    C 52,38 52,18 54,10
+    C 46,14 36,13 32,13
+    C 28,13 18,14 10,10
+    Z
+  "/>
+
+  <!-- Bottom Curled Roll -->
+  <path class="scroll-curl" d="M 10,52 C 10,57 18,59 32,59 C 46,59 54,57 54,52 C 54,48 46,50 32,50 C 18,50 10,48 10,52 Z"/>
+
+  <!-- Bottom Wooden/Cinnabar Spindle Handles -->
+  <rect class="scroll-roller" x="6" y="52" width="52" height="4" rx="2"/>
+  <circle class="scroll-roller" cx="6" cy="54" r="3"/>
+  <circle class="scroll-roller" cx="58" cy="54" r="3"/>
+
+  <!-- Ancient Manuscript Text Inscription Lines -->
+  <line class="scroll-line" x1="18" y1="22" x2="46" y2="22"/>
+  <line class="scroll-line" x1="18" y1="28" x2="46" y2="28"/>
+  <line class="scroll-line" x1="18" y1="34" x2="46" y2="34"/>
+  <line class="scroll-line" x1="18" y1="40" x2="36" y2="40"/>
+</svg>
