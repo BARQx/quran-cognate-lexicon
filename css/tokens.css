@@ -1,0 +1,104 @@
+/* ============================================================
+   Token system: light = papyrus & cinnabar ink
+                 dark:  basalt tablet & torchlight ochre
+   ============================================================ */
+:root {
+  color-scheme: light;
+  --bg-color: #f4ecd8;
+  --bg-color-alt: #ece0c4;
+  --card-bg: #fffcf4;
+  --card-bg-folio: #fdf9ee;
+  --card-bg-ledger: #f0e6cc;
+  --primary: #2b2118;
+  --accent: #a8542f;
+  --accent-hover: #8f4526;
+  --accent-soft: #f3e2d4;
+  --accent2: #3d6b6b;
+  --accent2-soft: #e2eeed;
+  --border: #ddd0ac;
+  --text: #2b2118;
+  --muted: #7a6c54;
+  --box-bg: #f0e6cc;
+  --badge-bg: #e2eeed;
+  --badge-text: #285454;
+  --tag-bg: #efe3c9;
+  --danger: #b3311c;
+  --link-bg: #fffcf4;
+  --shadow: rgba(43, 33, 24, 0.08);
+  --alert-bg: #fdf1cf;
+  --alert-border: #e8c266;
+  --alert-text: #6b4f10;
+  --accent3: #a4243b;
+  --accent3-hover: #821b2d;
+  --accent3-solid: #a4243b; /* light mode already passes AA (7.26:1) with white text at this weight */
+  
+  /* Per-script identity colors — light mode */
+  --script-arb: #2b2118;
+  --script-heb: #2c4870;
+  --script-syr: #8a3e23;
+  --script-nab: #75531a;
+  --script-msn: #8f3a2e;
+  --script-gez: #3d5c3a;
+  --rule-line: rgba(43, 33, 24, 0.045);
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-body: 'Work Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Type scale (1.2 ratio, base 1rem) */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.85rem;
+  --fs-base: 1rem;
+  --fs-md: 1.15rem;
+  --fs-lg: 1.4rem;
+  --fs-xl: 1.85rem;
+  --fs-2xl: 2.75rem;
+  
+  /* Spacing scale (4px base unit) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-7: 32px;
+  --sp-8: 40px;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-color: #0d1013;
+  --bg-color-alt: #14181c;
+  --card-bg: #181d22;
+  --card-bg-folio: #1b2127;
+  --card-bg-ledger: #14181c;
+  --primary: #ece4d0;
+  --accent: #f2903f;
+  --accent-hover: #ff9d4d;
+  --accent-soft: #33261c;
+  --accent2: #5fa8a8;
+  --accent2-soft: #1c2c2c;
+  --border: #2c343b;
+  --text: #ece4d0;
+  --muted: #93998f;
+  --box-bg: #1d2329;
+  --badge-bg: #1c2c2c;
+  --badge-text: #7fc7c7;
+  --tag-bg: #262e35;
+  --danger: #f0715c;
+  --link-bg: #1d2329;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --alert-bg: #3a2f10;
+  --alert-border: #7a5f1e;
+  --alert-text: #f0d998;
+  --accent3: #e0687e;
+  --accent3-hover: #ea7d92;
+  --accent3-solid: #c14a5f; /* darker variant for solid-fill buttons — plain --accent3 fails AA (3.26:1) with white text at this weight */
+  
+  /* Per-script identity colors — dark mode (brightened for contrast) */
+  --script-arb: #ece4d0;
+  --script-heb: #7ea3d6;
+  --script-syr: #d68f5f;
+  --script-nab: #d6ac5f;
+  --script-msn: #d67d6f;
+  --script-gez: #7fb37a;
+  --rule-line: rgba(0, 0, 0, 0.18);
+}

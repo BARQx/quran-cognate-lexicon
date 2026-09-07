@@ -1,0 +1,275 @@
+/* ============================================================
+   Layout & Base Styles
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  transition: background-color 0.25s ease;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-color);
+  background-image:
+    radial-gradient(ellipse at top left, var(--bg-color-alt) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom right, var(--bg-color-alt) 0%, transparent 55%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.5;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1 0 auto;
+  position: relative;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+  padding-top: 6px;
+}
+
+h1 {
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+  line-height: 1.08;
+  color: var(--primary);
+  margin-bottom: var(--sp-2);
+  letter-spacing: 0.005em;
+}
+
+p.subtitle {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  font-family: var(--font-body);
+}
+
+/* Theme toggle - stone switch */
+.theme-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 52px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--box-bg);
+  cursor: pointer;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+}
+
+.theme-toggle .knob {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transform: translateX(0);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+html[data-theme="dark"] .theme-toggle .knob {
+  transform: translateX(22px);
+}
+
+/* Ayah header — Qur'an 96:1 */
+.ayah-fade {
+  width: 100%;
+  background: transparent;
+  padding: 20px 16px 12px 16px;
+  text-align: center;
+}
+
+.ayah-fade-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.ayah-fade-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@font-face {
+  font-family: 'Al Qalam Quran Majeed Web Regular';
+  src: url('../fonts/AlQalamQuranMajeedWebRegular.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.ayah-line[lang="ar"] {
+  font-family: 'Al Qalam Quran Majeed Web Regular', 'Times New Roman', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent3);
+  line-height: 1.6;
+}
+
+.manuscript-hr {
+  position: relative;
+  height: 1px;
+  max-width: 380px;
+  margin: 16px auto 0 auto;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    var(--border) 20%, 
+    var(--accent3) 50%, 
+    var(--border) 80%, 
+    transparent 100%
+  );
+  opacity: 0.75;
+}
+
+.manuscript-hr::after {
+  content: "✦";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-color);
+  color: var(--accent3);
+  padding: 0 8px;
+  font-size: var(--fs-xs);
+  transition: background-color 0.25s ease;
+}
+
+/* Footer — deliberately set apart from the card/tool styling above */
+.site-footer {
+  border-top: 1px dashed var(--border);
+  margin-top: auto;
+  padding: 22px 16px 16px 16px;
+  background: var(--bg-color-alt);
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 28px;
+  padding-bottom: 18px;
+}
+
+.footer-heading {
+  color: var(--primary);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.footer-copy {
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.footer-author {
+  align-items: center;
+  display: flex;
+  font-size: 0.72rem;
+  font-style: normal;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  justify-content: center;
+  color: var(--muted);
+  padding-top: 4px;
+  text-align: center;
+}
+
+.footer-credit:not(:first-child)::before {
+  color: var(--border);
+  content: "·";
+  margin-right: 8px;
+}
+
+.footer-author a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-author a:hover {
+  text-decoration: underline;
+}
+
+/* ==================== Mobile Responsiveness: Layout ==================== */
+@media (max-width: 640px) {
+  body {
+    padding: 12px;
+  }
+  .container {
+    max-width: 100%;
+  }
+  header {
+    padding-top: 44px;
+  }
+  .theme-toggle {
+    top: -40px;
+    right: 4px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  p.subtitle {
+    font-size: 0.85rem;
+  }
+  .ayah-line[lang="ar"] {
+    font-size: 1.4rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .footer-author {
+    flex-direction: column;
+    font-size: 0.75rem;
+    gap: 3px;
+    line-height: 1.45;
+  }
+  .footer-credit:not(:first-child)::before {
+    content: none;
+  }
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+}
