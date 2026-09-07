@@ -227,7 +227,7 @@ function formatHomonymsLocally(entries) {
       derivativesHtml = `
         <details class="lex-derivatives-details">
           <summary class="lex-derivatives-summary">
-            <span class="deriv-icon">🌱</span>
+            <span class="deriv-icon">✦</span>
             <span class="deriv-title">Attested Hebrew Derivatives</span>
           </summary>
           <div class="lex-derivatives-content">

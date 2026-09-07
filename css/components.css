@@ -842,9 +842,15 @@ summary {
   background: var(--box-bg);
 }
 
-.etym-icon,
-.deriv-icon {
+.etym-icon {
   font-size: 0.9rem;
+}
+
+.deriv-icon {
+  font-size: 0.8rem;
+  color: var(--accent);
+  opacity: 0.9;
+  line-height: 1;
 }
 
 .etym-title,
