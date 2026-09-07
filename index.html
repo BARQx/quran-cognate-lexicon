@@ -106,7 +106,7 @@
     
     <div class="search-box">
       <input type="text" id="arabicInput" dir="rtl" placeholder="Enter Arabic root" onkeypress="if(event.key==='Enter') convertAndFetch()">
-      <button onclick="convertAndFetch()">Analyze Root</button>
+      <button id="analyzeBtn" onclick="convertAndFetch()">Analyze Root</button>
     </div>
     <div class="try-row" aria-label="Sample roots for the comparative analyzer">
       <span class="try-label">Try an example:</span>
@@ -124,28 +124,34 @@
 
       <!-- Unified Language Sequence across display boxes and table: Arabic -> Nabataean -> Hebrew -> Syriac -> Musnad -> Ge'ez -->
       <div class="script-grid">
-        <div class="script-box script-arb">
-          <div class="script-label">Arabic<span class="script-family">Central Semitic</span></div>
+        <div class="script-box script-arb" role="button" tabindex="0" onclick="openScriptInfoDialog('arabic')" onkeydown="handleScriptBoxKey(event, 'arabic')" aria-haspopup="dialog" aria-label="Learn why Arabic is shown and its relation to the project">
+          <span class="script-box-badge" aria-hidden="true" title="Learn why Arabic is shown">ⓘ</span>
+          <div class="script-label">Arabic</div>
           <div id="arabicRoot" class="script-value"></div>
         </div>
-        <div class="script-box script-nab">
-          <div class="script-label">Nabataean<span class="script-family">NW Semitic · Aramaic</span></div>
+        <div class="script-box script-nab" role="button" tabindex="0" onclick="openScriptInfoDialog('nabataean')" onkeydown="handleScriptBoxKey(event, 'nabataean')" aria-haspopup="dialog" aria-label="Learn why Nabataean is shown and its relation to the project">
+          <span class="script-box-badge" aria-hidden="true" title="Learn why Nabataean is shown">ⓘ</span>
+          <div class="script-label">Nabataean</div>
           <div id="nabataeanRoot" class="script-value nabataean-font"></div>
         </div>
-        <div class="script-box script-heb">
-          <div class="script-label">Hebrew<span class="script-family">NW Semitic · Canaanite</span></div>
+        <div class="script-box script-heb" role="button" tabindex="0" onclick="openScriptInfoDialog('hebrew')" onkeydown="handleScriptBoxKey(event, 'hebrew')" aria-haspopup="dialog" aria-label="Learn why Hebrew is shown and its relation to the project">
+          <span class="script-box-badge" aria-hidden="true" title="Learn why Hebrew is shown">ⓘ</span>
+          <div class="script-label">Hebrew</div>
           <div id="hebrewRoot" class="script-value hebrew-font"></div>
         </div>
-        <div class="script-box script-syr">
-          <div class="script-label">Syriac<span class="script-family">NW Semitic · Aramaic</span></div>
+        <div class="script-box script-syr" role="button" tabindex="0" onclick="openScriptInfoDialog('syriac')" onkeydown="handleScriptBoxKey(event, 'syriac')" aria-haspopup="dialog" aria-label="Learn why Syriac is shown and its relation to the project">
+          <span class="script-box-badge" aria-hidden="true" title="Learn why Syriac is shown">ⓘ</span>
+          <div class="script-label">Syriac</div>
           <div id="syriacRoot" class="script-value syriac-font"></div>
         </div>
-        <div class="script-box script-msn">
-          <div class="script-label">Musnad (Sabaic)<span class="script-family">South Semitic · Sayhadic</span></div>
+        <div class="script-box script-msn" role="button" tabindex="0" onclick="openScriptInfoDialog('musnad')" onkeydown="handleScriptBoxKey(event, 'musnad')" aria-haspopup="dialog" aria-label="Learn why Musnad is shown and its relation to the project">
+          <span class="script-box-badge" aria-hidden="true" title="Learn why Musnad is shown">ⓘ</span>
+          <div class="script-label">Musnad (Sabaic)</div>
           <div id="musnadRoot" class="script-value musnad-font"></div>
         </div>
-        <div class="script-box script-gez">
-          <div class="script-label">Ge'ez<span class="script-family">South Semitic · Ethiosemitic</span></div>
+        <div class="script-box script-gez" role="button" tabindex="0" onclick="openScriptInfoDialog('geez')" onkeydown="handleScriptBoxKey(event, 'geez')" aria-haspopup="dialog" aria-label="Learn why Ge'ez is shown and its relation to the project">
+          <span class="script-box-badge" aria-hidden="true" title="Learn why Ge'ez is shown">ⓘ</span>
+          <div class="script-label">Ge'ez</div>
           <div id="geezRoot" class="script-value"></div>
         </div>
       </div>
@@ -347,6 +353,24 @@
     </div>
 
     <button class="close-btn" onclick="document.getElementById('root-morphology-dialog').close()">Got it</button>
+  </div>
+</dialog>
+ 
+<dialog id="script-info-dialog" class="mobile-dialog" aria-labelledby="script-dialog-title">
+  <div class="dialog-content">
+    <div id="script-dialog-header" class="script-dialog-head">
+      <!-- Injected dynamically -->
+    </div>
+
+    <div id="script-dialog-banner" class="script-dialog-banner">
+      <!-- Injected dynamically -->
+    </div>
+
+    <div id="script-dialog-body" class="script-dialog-body">
+      <!-- Injected dynamically -->
+    </div>
+
+    <button class="close-btn" type="button" onclick="document.getElementById('script-info-dialog').close()">Got it</button>
   </div>
 </dialog>
 
