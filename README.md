@@ -1,10 +1,13 @@
 # Qur'anic Arabic Cognate & Lexicon Portal
 
-An open-source comparative root analyzer and multi-dictionary portal for Qur'anic Arabic, Hebrew, Aramaic, Syriac, Sabaic, and ancient epigraphic scripts.
+A comparative root analyzer and multi-dictionary portal for Qur'anic Arabic and its sister language Hebrew, featuring ancient script reconstruction and classical Arabic lexicon lookups.
 
-This tool helps you explore the original, concrete meanings of Qur'anic words by comparing them with sister Semitic languages. Because Arabic, Hebrew, Aramaic, Sabaic, and Ge'ez come from the same ancient family tree, they share thousands of words with identical roots. Classical Arabic dictionaries often focused on later poetic uses or theological definitions, while sister languages frequently preserved older, everyday physical meanings (such as agricultural, pastoral, or craftsmen terms) that shed fresh light on the sacred text.
+This tool helps you explore the deeper, original meanings of Qur'anic words along two distinct research paths:
 
-Instead of spending hours searching through heavy printed books, this tool does the heavy lifting for you: type in an Arabic root, and it immediately calculates its historical sound shifts, displays how the letters looked in ancient scripts, pulls real definitions from live lexicons, and gives you one-click links to all major classical dictionaries.
+1. **The Hebrew Cognate Path:** Connect any Qur'anic Arabic root to its sister language, Hebrew, and immediately search live classical Hebrew dictionaries. Because Arabic and Hebrew are direct linguistic sisters sharing the same Semitic family tree, thousands of words share identical origins. Classical Arabic dictionaries often narrowed words down to later poetry or theological terms, while Hebrew frequently preserved older, concrete physical meanings (like agricultural or craftsmanship terms) that illuminate the sacred text.
+2. **The Classical Arabic Path:** Open the exact same Arabic root or word across major classical dictionaries (like Lane's Lexicon and Hans Wehr) and Qur'anic corpus databases with a single click.
+
+In addition to Hebrew dictionary lookups, the tool reconstructs how your root's letters looked and sounded across related ancient scripts (Nabataean, Syriac, Sabaic/Musnad, and Ge'ez) using historical sound-change rules, complete with educational notes on ancient writing systems.
 
 ![sc1.png](_attachments/sc1.png)
 ![sc2.png](_attachments/sc2.png)
@@ -20,93 +23,105 @@ Use the portal directly in your web browser with zero installation:
 
 ## What It Does
 
-### 1. Comparative Root Engine across 6 Ancient Scripts
-Type in any Arabic root or word (such as كتب, سلم, شمس, or ملك) and the engine calculates the corresponding form in:
-- **Classical Arabic:** The baseline Qur'anic form.
-- **Nabataean:** The ancient cursive script carved by Arab traders in Petra, which is the direct visual ancestor of the Arabic alphabet.
-- **Hebrew:** The closest major literary sister language to Arabic.
-- **Syriac (Aramaic):** The trade and scholarly lingua franca of the Near East in late antiquity.
-- **Musnad (Ancient South Arabian / Sabaic):** The monumental stone script of ancient Yemen that preserved all 29 original Semitic consonants.
-- **Ge'ez (Classical Ethiopic):** The ancient South Semitic tongue from across the Red Sea, famous for words shared with pre-Islamic Arabia.
+The portal is organized into two main sections:
 
-### 2. Live Hebrew Lexicons & Academic Dictionaries
-- Fetches real definitions from trusted classical Hebrew lexicons via Sefaria (including Brown-Driver-Briggs, Klein, and Jastrow) as well as Wiktionary.
-- Groups results clearly by distinct senses, homonyms, and historical eras (Biblical, Mishnaic, and Talmudic).
-- Shows Strong's Concordance reference numbers (like `#H7965`) for exact cross-referencing with biblical texts.
+---
 
-### 3. Layman Grammar Explanations (Click-to-Learn)
-Ancient grammar terms can be confusing. The app translates academic jargon into plain English:
-- **Verbal Stems (Binyanim):** Click on tags like *Qal*, *Pi'el*, *Hif'il*, or *Hitpa'el* to see what they mean in simple terms, complete with their direct Arabic counterparts (Form I فَعَلَ, Form II فَعَّلَ, Form IV أَفْعَلَ, Form V تَفَعَّلَ) and clear examples.
-- **Parts of Speech:** Click on terms like *proper noun*, *transitive verb*, or *substantive* for quick, plain-language summaries.
-- **Strong's Numbers:** Click any Strong's tag to learn how the biblical numbering system works.
+### Path 1: Root Analyzer & Live Hebrew Lexicon Lookup
 
-### 4. Automatic Smart Fallback for Alternate Spellings
-Sometimes an ancient word did not survive under the textbook sound-shift rule. Rather than showing a dead-end "no results" page:
-- The engine automatically tests attested historical variants (such as words where Arabic Seen س maps to Hebrew Samekh ס instead of Shin ש, or where initial Waw و shifts to Yodh י).
-- When a variant finds live dictionary proof, the app highlights it as an "attested alternate" and provides a "What does this mean?" explainer popup with the linguistic history.
+#### 1. Live Hebrew Dictionary Evidence
+When you analyze an Arabic root, the portal derives its corresponding Hebrew cognate and immediately searches live Hebrew dictionaries via the Sefaria API and Wiktionary:
+- **Brown-Driver-Briggs (BDB):** The gold standard lexicon for Biblical Hebrew.
+- **Klein Comprehensive Etymological Dictionary:** Traces words back through comparative Semitic roots.
+- **Jastrow Dictionary:** Covers Talmudic, Targumic, and Midrashic literature.
+- **Wiktionary:** Modern and historical Hebrew usage notes.
+- Results are organized by homonym groups, distinct senses, and Strong's Concordance numbers (such as `#H7965`).
 
-### 5. Automatic Root Morphology & Weak Letter Detection
-- Automatically detects if your root is **Weak (معتل)**, **Assimilating (مثال)**, **Hollow (جوف)**, **Defective (ناقص)**, or **Geminate / Doubled (مضاعف)**.
-- Displays interactive classification badges. Clicking them opens a guide explaining how flexible letters change across languages and why certain letters disappear in verb conjugations.
+*(Please note: Live dictionary lookups in Section 1 are specifically for Hebrew. The other scripts are reconstructed via historical sound shifts for visual and phonetic comparison, as explained below).*
 
-### 6. Interactive Ancient Script History Popups
-Click on any of the script cards at the top of the results to open an in-depth educational panel:
-- **Historical Background:** Who spoke it, where it flourished, and how it was written.
-- **Relation to the Qur'an:** Historical ties, trade routes, and scribal connections.
-- **Real Archaeological Examples:** Concrete historical examples such as the Namara Inscription (328 CE), the Sabaic monotheistic *Rahmanan* inscriptions in Yemen, and classical Arabic words acknowledged by early exegetes as Ethiopic or Aramaic cognates (such as *al-Mishkat*, *al-Ma'idah*, and *al-Hawariyyun*).
+#### 2. Visual Script Reconstruction across 6 Ancient Alphabets
+See how your root transforms across ancient Semitic scripts based on historical sound-shift laws:
+- **Arabic:** The baseline Qur'anic form.
+- **Nabataean:** The ancient cursive script carved in stone by Arab merchants in Petra, which evolved directly into the Arabic alphabet.
+- **Hebrew:** Written in traditional Hebrew square script.
+- **Syriac (Aramaic):** The trade and scholarly script of late antiquity.
+- **Musnad (Ancient South Arabian / Sabaic):** The monumental stone script of ancient Yemen that preserved 29 consonants.
+- **Ge'ez (Classical Ethiopic):** The ancient South Semitic script from across the Red Sea.
 
-### 7. Letter-by-Letter Phonetic Breakdown Table
-- An interactive table breaks your root down letter by letter across Arabic, Nabataean, Hebrew, Syriac, Musnad, and Ge'ez.
-- Includes clear notes explaining the exact phonetic law governing each letter (for example, why Arabic Dhad ض merged with Tsade צ in Hebrew, but stayed distinct in Sabaic).
+#### 3. Automatic Alternate Spelling Fallback
+Sometimes an ancient word did not survive in Hebrew under the standard sound-shift formula. Rather than showing a dead-end "no entries found" message:
+- The engine automatically searches attested historical variants (such as words where Arabic Seen س survived in Hebrew under Samekh ס instead of Shin ש, or where initial Waw و shifted to Yodh י).
+- When an alternate spelling finds live dictionary proof, the app presents it as an "attested alternate" and provides a "What does this mean?" popup explaining the historical shift.
 
-### 8. Arabic Multi-Dictionary & Corpus Directory
-The lower section provides a direct search portal across the most respected Arabic lexicons and Qur'anic databases in one click:
-- **Classical Lexicons:** Lane's Lexicon and Hans Wehr (via Ejtaal), plus Hawramani Classical Arabic Lexicon search.
-- **Bilingual Dictionaries:** Al-Ma'any (Arabic-Arabic, Arabic-English, Arabic-Urdu), Arabdict, and Reverso Context.
-- **Qur'an Corpus Tools:** The Quranic Arabic Corpus (root and word level), Quran.com, and Quran Morphology.
-- **Copy All Links:** A single button copies every dictionary link formatted with titles and URLs for easy saving.
+#### 4. Layman Grammar Explanations (Click-to-Learn)
+Grammar abbreviations can be difficult to understand. The app translates technical jargon into plain English:
+- **Verbal Stems (Binyanim):** Click on tags like *Qal*, *Pi'el*, *Hif'il*, or *Hitpa'el* to see what they mean in everyday language, complete with their direct Arabic counterparts (Form I فَعَلَ, Form II فَعَّلَ, Form IV أَفْعَلَ, Form V تَفَعَّلَ) and concrete examples.
+- **Parts of Speech:** Click on terms like *proper noun* or *transitive verb* for quick summaries.
+- **Strong's Numbers:** Click any Strong's badge to learn how biblical indexing works.
 
-### 9. Research Brief Markdown Exporter
-- Click **"Copy Research Brief (Markdown)"** to generate a clean, professionally formatted summary of your findings.
-- Includes the root, all six script forms, morphology tags, and full dictionary definitions with sense numbers, ready to paste directly into Obsidian, Notion, Google Docs, or study notes.
+#### 5. Automatic Root Morphology & Weak Letter Detection
+- Automatically identifies if an Arabic root is **Weak (معتل)**, **Assimilating (مثال)**, **Hollow (جوف)**, **Defective (ناقص)**, or **Geminate / Doubled (مضاعف)**.
+- Clicking any classification badge opens a guide explaining how flexible letters change across languages and why certain letters disappear during conjugation.
 
-### 10. Comprehensive Aramaic Lexicon (CAL) Integration
-- Click **"Look up in CAL"** to launch Johns Hopkins University's Comprehensive Aramaic Lexicon with your active root already loaded.
+#### 6. Educational Ancient Script Cards
+Click on any of the script boxes above the results to open an in-depth educational panel:
+- **Linguistic Background:** Where the script was used, who spoke it, and its reading direction.
+- **Connection to the Qur'an:** Historical trade routes, cultural contacts, and scribal traditions.
+- **Archaeological Examples:** Concrete examples such as the Namara Inscription (328 CE), the Sabaic monotheistic *Rahmanan* inscriptions in Yemen, and classical Arabic words documented by early exegetes as Ethiopic or Aramaic cognates (such as *al-Mishkat*, *al-Ma'idah*, and *al-Hawariyyun*).
 
-### 11. Recent Search Shelf & History Export
-- Automatically remembers your recently analyzed roots right on your device.
-- Click any past root to run it again instantly.
-- Includes buttons to **"Export history"** (download your search history as a JSON file) or **"Clear history"** at any time.
+#### 7. Letter-by-Letter Phonetic Breakdown Table
+- An interactive table breaks your root down letter by letter across all six scripts.
+- Explains the exact phonetic rule governing each letter (for example, why Arabic Dhad ض merged with Tsade צ in Hebrew, but remained distinct in Sabaic).
 
-### 12. Instant Shareable Deep Links
-- Every analysis updates the web address (e.g. `?root=كتب` or `?lex=كتب`).
-- Click **"Copy Analysis Link"** to send a direct link to a friend or student that automatically opens and analyzes that exact root.
+#### 8. Comprehensive Aramaic Lexicon (CAL) Integration
+- For researchers looking to examine Aramaic definitions, clicking **"Look up in CAL"** launches Johns Hopkins University's Comprehensive Aramaic Lexicon with your active root already pre-filled.
 
-### 13. Smart Keyboard & Dialect Input Support
-- Automatically strips Arabic vowel marks (tashkeel), tanween, spaces, and punctuation so messy text does not break your search.
-- Recognizes Persian and Urdu keyboard characters (such as ی, ے, ک, and ہ) and normalizes them to their standard Arabic equivalents automatically.
+#### 9. Research Brief Markdown Exporter
+- Click **"Copy Research Brief (Markdown)"** to generate a clean, formatted document containing the root, all six script forms, morphology tags, and full Hebrew dictionary definitions with sense numbers, ready to paste into Obsidian, Notion, or study notes.
 
-### 14. Thoughtful Reader Experience
-- Light mode by default, styled like an ancient manuscript page.
-- Dark mode toggle in the top-right corner that remembers your choice.
-- Custom slim scrollbars designed to match the theme on Windows, Mac, and Linux.
-- Modal dialogs stay locked in place with zero screen jumping, and only close when you deliberately click the "Got it" button so you never lose your spot.
-- Works smoothly on desktop computers, tablets, and smartphones.
+#### 10. Recent Search Shelf & History Export
+- Automatically saves recently analyzed roots locally on your device for quick re-use.
+- Includes options to **"Export history"** (downloads a JSON file) or **"Clear history"** at any time.
+
+#### 11. Shareable Deep Links
+- Every search updates the URL in your address bar.
+- Click **"Copy Analysis Link"** to create a direct link that opens that exact root automatically on another device.
+
+---
+
+### Path 2: Classical Arabic Lexicons & Qur'an Corpus Portal
+
+Type any Arabic root or word in the lower section to query major classical Arabic dictionaries and Qur'anic databases without searching each one individually:
+
+- **Classical Dictionaries:** Direct search in Lane's Lexicon and Hans Wehr (via Ejtaal), plus Hawramani Classical Arabic Lexicon search.
+- **Bilingual & Modern Dictionaries:** Al-Ma'any (Arabic-Arabic, Arabic-English, Arabic-Urdu), Arabdict, and Reverso Context.
+- **Qur'an Linguistic Corpora:** The Quranic Arabic Corpus (root level and word level), Quran.com, and Quran Morphology.
+- **Copy All Source Links:** A single button copies every formatted dictionary URL to your clipboard for quick citations.
+
+---
+
+## User Experience
+
+- **Manuscript & Ledger Design:** Thoughtfully crafted layout featuring a soft manuscript folio for comparative root analysis and a crisp ledger for Arabic reference lookups.
+- **Light & Dark Theme:** Clean light mode by default with an instant dark mode toggle that remembers your preference.
+- **Focused Modals:** Educational dialog boxes lock the background scroll without any screen jumping, and only close when you deliberately click the "Got it" button so you never lose your place.
+- **Dialect & Keyboard Normalization:** Automatically strips tashkeel, tanween, and spaces, and converts Persian/Urdu keyboard letters (ی, ے, ک, and ہ) to standard Arabic automatically.
+- **Responsive:** Optimized for phones, tablets, and desktop computers.
 
 ---
 
 ## Technical Details
 
-- Built with standard HTML5, CSS3, and modern modular vanilla JavaScript.
-- No build tools, no compilers, no node_modules required to run.
-- Completely static: fast page loads, private (your searches stay in your browser), and easy to deploy on any static hosting.
-- Lexicon data is retrieved live from the public Sefaria API and Wiktionary API.
+- Built with HTML5, CSS3, and modular vanilla JavaScript.
+- No build steps, no compilers, no node_modules required.
+- Completely static: fast page loads, private (all your searches stay in your browser), and easy to deploy on any static hosting.
+- Live Hebrew lexicon definitions are fetched directly from the public Sefaria and Wiktionary APIs.
 
 ---
 
 ## Contributing & Corrections
 
-Comparative linguistics is a nuanced field. If you notice a sound-shift rule that needs refinement or a dictionary link that can be improved:
+Comparative Semitic linguistics is a nuanced field. If you notice a sound-shift correspondence that needs refinement or a dictionary link that can be improved:
 - Open an issue on GitHub: [https://github.com/BARQx/quran-cognate-lexicon/issues](https://github.com/BARQx/quran-cognate-lexicon/issues)
 
 ---
